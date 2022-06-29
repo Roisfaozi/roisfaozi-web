@@ -1,21 +1,42 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@tailwind variants;
-
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap');
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Manrope, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
-  color: inherit;
+  @apply text-[#8B8B93] hover:text-[#191919];
   text-decoration: none;
 }
 
 * {
   box-sizing: border-box;
+}
+
+.navigation,
+.navigation-main {
+  @apply w-full bg-none fixed top-0 z-50 transition-all duration-500;
+}
+
+.navigation-main {
+  @apply flex justify-between items-center h-20 px-[120px] py-[10px];
+}
+
+.logo {
+  @apply relative w-full z-50;
+}
+
+.nav-menu,
+.nav-menu-item {
+  @apply flex justify-between items-start gap-[50px];
+}
+
+.nav-menu-item li {
+  @apply font-normal text-xl;
 }
