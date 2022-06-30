@@ -22,6 +22,27 @@ export default function Header() {
             </Link>
           </div>
         </div>
+        <div id='scroll'>
+          <a
+            href=''
+            className='text-link'
+            style={{ writingMode: 'vertical-rl' }}>
+            Scroll Down
+            <span>
+              <svg
+                width='18'
+                height='58'
+                viewBox='0 0 18 58'
+                fill='none'
+                xmlns='http://www.w3.org/2000/svg'>
+                <path
+                  d='M8.99999 -3.49692e-07L8.99998 57M8.99998 57L1 48M8.99998 57L17 48'
+                  stroke='#5E5E5E'
+                />
+              </svg>
+            </span>
+          </a>
+        </div>
       </div>
     </header>
   )
