@@ -11,8 +11,7 @@ body {
 }
 
 a {
-  @apply text-[#8B8B93] hover:text-[#191919];
-  text-decoration: none;
+  @apply text-gray-text hover:text-neutral-primary no-underline;
 }
 
 * {
@@ -39,4 +38,31 @@ a {
 
 .nav-menu-item li {
   @apply font-normal text-xl;
+}
+
+.header {
+  @apply relative m-0 pt-14;
+}
+
+.header-wrapper {
+  @apply relative flex flex-col w-full h-full overflow-hidden items-start px-[200px] py-[70px] gap-3;
+}
+.header-wrapper p {
+  @apply text-gray-text font-normal text-[25px] leading-[35px];
+}
+
+.header-title {
+  @apply font-bold text-[80px] text-neutral-primary;
+}
+
+.header-wrapper .description {
+  @apply text-xl pb-4;
+}
+
+.btn-email {
+  @apply inline-flex items-center pt-[10px] before:absolute  before:w-[50px] before:h-[50px] before:bg-[#E5E8EF] before:rounded-[50%] before:top-0 before:bottom-0;
+}
+
+.btn-email a {
+  @apply relative font-semibold text-xl text-neutral-primary pl-[25px];
 }
