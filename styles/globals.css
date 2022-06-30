@@ -20,7 +20,7 @@ a {
 
 .navigation,
 .navigation-main {
-  @apply w-full bg-none fixed top-0 z-50 transition-all duration-500;
+  @apply w-full bg-white fixed top-0 z-50 transition-all duration-500;
 }
 
 .navigation-main {
@@ -76,4 +76,23 @@ a {
 }
 .text-link span {
   @apply m-auto;
+}
+
+.section {
+  @apply px-[200px] py-[70px];
+}
+.section-container {
+  @apply relative flex flex-col items-start gap-5;
+}
+
+.section-title {
+  @apply text-[45px] font-bold text-neutral-primary;
+}
+
+.story-section {
+  @apply flex flex-row justify-end items-start;
+}
+
+.intro {
+  @apply w-2/3 text-xl text-neutral-primary leading-[35px];
 }
