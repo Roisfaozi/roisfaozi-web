@@ -55,7 +55,8 @@ a {
   @apply font-bold text-[80px] text-neutral-primary;
 }
 
-.header-wrapper .description {
+.header-wrapper .description,
+.description {
   @apply text-xl pb-4;
 }
 
@@ -95,4 +96,43 @@ a {
 
 .intro {
   @apply w-2/3 text-xl text-neutral-primary leading-[35px];
+}
+
+.section-description {
+  @apply text-xl text-gray-text;
+}
+
+.project-section {
+  @apply relative flex flex-col items-start;
+}
+
+.project-item {
+  @apply flex items-center px-[200px] py-10 gap-6 justify-between hover:bg-[#E5E8EF];
+}
+
+.reverse {
+  @apply flex-row-reverse;
+}
+
+.project-intro {
+  @apply flex flex-col items-start p-0 gap-[10px] w-[55%];
+}
+
+.project-name {
+  @apply font-bold text-3xl;
+}
+.project-name,
+.project-desc {
+  @apply py-[10px] text-neutral-primary;
+}
+
+.project-desc {
+  @apply text-xl font-normal;
+}
+
+.technology {
+  @apply flex flex-row pr-[10px] py-0 gap-[14px];
+}
+.technology p {
+  @apply font-normal text-sm text-neutral-primary;
 }

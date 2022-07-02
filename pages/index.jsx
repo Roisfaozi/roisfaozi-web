@@ -1,5 +1,6 @@
 import Header from '../components/header'
 import Navbar from '../components/navbar'
+import Projects from '../components/projects'
 import Story from '../components/story'
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
       <Navbar />
       <Header />
       <Story />
+      <Projects />
     </div>
   )
 }
