@@ -136,3 +136,26 @@ a {
 .technology p {
   @apply font-normal text-sm text-neutral-primary;
 }
+
+.section-contact {
+  @apply bg-neutral-primary w-full;
+}
+
+.contact {
+  @apply py-[90px] relative flex flex-col items-center justify-center  gap-[54px];
+}
+.contact h1,
+.contact p {
+  @apply text-white;
+}
+
+.contact-desc {
+  @apply text-xl font-normal text-center;
+}
+
+.email-link {
+  @apply px-[30px] py-[15px] bg-[#E5E8EF] rounded-[20px];
+}
+.email-link a {
+  @apply text-xl text-center text-neutral-primary font-semibold;
+}
