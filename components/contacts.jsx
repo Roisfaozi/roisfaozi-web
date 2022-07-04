@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function Contacts() {
   return (
-    <section className='section-contact'>
+    <section className='section-contact' id='contact'>
       <div className='section contact'>
         <h1 className='header-title'>Let's work together.</h1>
         <p className='contact-desc'>
@@ -12,11 +12,9 @@ export default function Contacts() {
           <br />
           I’ll try my best to get back to you!
         </p>
-        <div className='email-link'>
-          <Link href='mailto:roisfaozi5@gmail.com'>
-            <a>Say Hello</a>
-          </Link>
-        </div>
+        <Link href='mailto:roisfaozi5@gmail.com'>
+          <a className='email-link'>Say Hello</a>
+        </Link>
       </div>
     </section>
   )

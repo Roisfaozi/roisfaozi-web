@@ -8,6 +8,7 @@ body {
   margin: 0;
   font-family: Manrope, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
     Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -107,7 +108,7 @@ a {
 }
 
 .project-item {
-  @apply flex items-center px-[200px] py-10 gap-6 justify-between hover:bg-[#E5E8EF];
+  @apply grid grid-cols-2 items-center px-[200px] py-10 gap-6 justify-between bg-[#E5E8EF] hover:bg-white;
 }
 
 .reverse {
@@ -115,7 +116,7 @@ a {
 }
 
 .project-intro {
-  @apply flex flex-col items-start p-0 gap-[10px] w-[55%];
+  @apply flex flex-col items-start p-0 gap-[10px] w-full;
 }
 
 .project-name {
@@ -137,8 +138,15 @@ a {
   @apply font-normal text-sm text-neutral-primary;
 }
 
+.sources {
+  @apply flex p-[10px] gap-[10px];
+}
+.sources a svg {
+  @apply text-[#5E5E5E] hover:text-neutral-primary;
+}
+
 .section-contact {
-  @apply bg-neutral-primary w-full;
+  @apply relative bg-neutral-primary w-full;
 }
 
 .contact {
@@ -154,8 +162,29 @@ a {
 }
 
 .email-link {
-  @apply px-[30px] py-[15px] bg-[#E5E8EF] rounded-[20px];
+  @apply px-[30px] py-[15px] bg-[#e5e8ef] hover:bg-[#e5e8ef93] rounded-[20px] text-xl text-center text-neutral-primary  font-semibold;
 }
-.email-link a {
-  @apply text-xl text-center text-neutral-primary font-semibold;
+
+.footer {
+  @apply py-[33px] px-[10px] text-center bg-neutral-primary;
+}
+.footer p {
+  @apply font-normal text-lg text-white;
+}
+.footer p a {
+  @apply text-white hover:text-gray-text;
+}
+
+#scroll-top {
+  @apply fixed right-[5.1rem] bottom-12;
+}
+
+.text-link-top {
+  @apply relative text-[#5E5E5E]  font-normal text-xl flex flex-row-reverse items-center gap-9;
+  writing-mode: vertical-rl;
+  transform: rotate(90deg);
+}
+.text-link-top span {
+  @apply m-auto;
+  transform: rotate(-90deg);
 }

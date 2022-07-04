@@ -31,7 +31,7 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link href='/#about'>
+            <Link href='/#story'>
               <a>About</a>
             </Link>
           </li>

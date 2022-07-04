@@ -24,8 +24,8 @@ export default function Header() {
         </div>
         <div id='scroll'>
           <a
-            href=''
-            className='text-link'
+            href='#story'
+            className='text-link w-full'
             style={{ writingMode: 'vertical-rl' }}>
             Scroll Down
             <span>
