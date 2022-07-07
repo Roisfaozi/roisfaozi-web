@@ -4,8 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap');
 html,
 body {
-  padding: 0;
-  margin: 0;
+  @apply p-0 m-0 overflow-x-hidden;
   font-family: Manrope, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
     Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   scroll-behavior: smooth;
@@ -15,34 +14,65 @@ a {
   @apply text-gray-text hover:text-neutral-primary no-underline;
 }
 
-* {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
 }
 
-.navigation,
-.navigation-main {
-  @apply w-full bg-white fixed top-0 z-50 transition-all duration-500;
+.navigation {
+  @apply fixed w-full flex justify-between bg-white top-0 z-50;
 }
 
 .navigation-main {
-  @apply flex justify-between items-center h-20 px-[120px] py-[10px];
+  @apply absolute top-0 left-0 z-10 flex w-full items-center bg-transparent 2md:px-[120px] sm:px-4 sm:py-3 px-0 py-2 2md:py-[10px];
+}
+
+.hamburger-wrapper {
+  @apply flex items-center px-4;
+}
+
+/* Hamburger */
+.hamburger-line {
+  @apply block w-[30px] h-[2px] my-2 bg-black;
+}
+
+.hamburger-active > span:nth-child(1) {
+  --tw-rotate: 45deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hamburger-active > span:nth-child(2) {
+  --tw-scale-x: 0;
+  --tw-scale-y: 0;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hamburger-active > span:nth-child(3) {
+  --tw-rotate: -45deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .logo {
-  @apply relative w-full z-50;
+  @apply block py-6;
 }
 
-.nav-menu,
-.nav-menu-item {
-  @apply flex justify-between items-start gap-[50px];
+.nav-menu {
+  @apply absolute top-full w-full rounded-lg  py-5 2md:static 2md:block 2md:max-w-full 2md:rounded-none 2md:bg-transparent right-5 2md:shadow-none;
 }
 
-.nav-menu-item li {
-  @apply font-normal text-xl;
+.nav-menu-link {
+  @apply mx-8 text-center justify-center flex py-2 font-normal 2md:text-xl text-4xl text-gray-text group-hover:text-neutral-primary dark:text-white;
 }
 
 .header {
-  @apply relative m-0 pt-14;
+  @apply relative m-0 pt-[70px];
 }
 
 .header-wrapper {

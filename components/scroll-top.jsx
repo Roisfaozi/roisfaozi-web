@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function ScrollTop() {
   const [isVisible, setIsVisible] = useState(false)
-
+  const scrollRef = useRef(null)
   const toggleVisibility = () => {
     if (window.pageYOffset > 500) {
       setIsVisible(true)
@@ -19,18 +19,35 @@ export default function ScrollTop() {
   }
 
   useEffect(() => {
-    window.addEventListener('scroll', toggleVisibility)
+    const animateScroll = () => {
+      if (
+        document.body.scrollTop > 2300 ||
+        document.documentElement.scrollTop > 2300
+      ) {
+        scrollRef.current.classList.add('animate-pulse')
+      } else {
+        scrollRef.current.classList.remove('animate-pulse')
+      }
+    }
+    window.addEventListener('scroll', animateScroll)
+    return () => {
+      window.removeEventListener('scroll', animateScroll)
+    }
+  }, [])
 
+  useEffect(() => {
+    window.addEventListener('scroll', toggleVisibility)
     return () => {
       window.removeEventListener('scroll', toggleVisibility)
     }
   }, [])
   return (
-    <div id='scroll-top'>
+    <div id='scroll-top' className={`${isVisible ? 'block' : 'hidden'}`}>
       <button
+        ref={scrollRef}
         type='button'
         onClick={scrollToTop}
-        className={`${isVisible ? 'opacity-100' : 'opacity-0'} text-link-top`}>
+        className='text-link-top'>
         Top
         <span>
           <svg

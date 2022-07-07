@@ -2,15 +2,15 @@ import Link from 'next/link'
 
 export default function Header() {
   return (
-    <header className='header'>
-      <div className='header-wrapper'>
+    <section className='header'>
+      <div className='header-wrapper  '>
         <p>Hello, My name is</p>
-        <h1 className='header-title'>
+        <h1 className='header-title transition ease-in-out duration-700 hover:-translate-y-1'>
           Rois Faozi.
           <br />
           Front-end Developer.
         </h1>
-        <p className='description'>
+        <p className='description transition-all'>
           A self-taught developer with an interest in visual design and <br />{' '}
           building exceptional digital experiences.
         </p>
@@ -44,6 +44,6 @@ export default function Header() {
           </a>
         </div>
       </div>
-    </header>
+    </section>
   )
 }
