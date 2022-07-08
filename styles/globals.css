@@ -64,7 +64,7 @@ a {
 }
 
 .nav-menu {
-  @apply absolute top-full w-full rounded-lg  py-5 2md:static 2md:block 2md:max-w-full 2md:rounded-none 2md:bg-transparent right-5 2md:shadow-none;
+  @apply absolute top-full w-full rounded-lg py-0 md:py-5 2md:static 2md:block 2md:max-w-full 2md:rounded-none 2md:bg-transparent right-5 2md:shadow-none;
 }
 
 .nav-menu-link {
@@ -76,49 +76,49 @@ a {
 }
 
 .header-wrapper {
-  @apply relative flex flex-col w-full h-full overflow-hidden items-start px-[200px] py-[70px] gap-3;
+  @apply relative flex flex-col w-full h-full overflow-hidden items-start 2md:px-[200px] sm:px-[100px] px-2 2md:py-[70px] py-4 sm:py-[45px] md:gap-3 gap-5;
 }
 .header-wrapper p {
-  @apply text-gray-text font-normal text-[25px] leading-[35px];
+  @apply text-gray-text font-normal 2md:text-[25px] text-xl leading-[35px];
 }
 
 .header-title {
-  @apply font-bold text-[80px] text-neutral-primary;
+  @apply font-bold lg:text-[80px] 2md:text-[50px] sm:text-5xl text-4xl text-neutral-primary;
 }
 
 .header-wrapper .description,
 .description {
-  @apply text-xl pb-4;
+  @apply md:text-xl text-base md:pb-4 pb-0;
 }
 
 .btn-email {
-  @apply inline-flex items-center pt-[10px] before:absolute  before:w-[50px] before:h-[50px] before:bg-[#E5E8EF] before:rounded-[50%] before:top-0 before:bottom-0;
+  @apply inline-flex items-center pt-[10px] before:absolute  before:md:w-[50px] before:md:h-[50px] before:w-[40px] before:h-[40px] before:bg-[#E5E8EF] before:rounded-[50%] before:md:top-0 before:top-0 before:bottom-0;
 }
 
 .btn-email a {
-  @apply relative font-semibold text-xl text-neutral-primary pl-[25px];
+  @apply relative font-semibold md:text-xl text-base text-neutral-primary pl-[25px];
 }
 
 #scroll {
-  @apply absolute right-[110px] bottom-4;
+  @apply absolute 2md:right-[110px] md:right-[50px] right-[20px] bottom-4 md:block hidden;
 }
 
 .text-link {
-  @apply relative text-[#5E5E5E] font-normal text-xl flex flex-row items-center gap-9;
+  @apply relative text-[#5E5E5E] font-normal lg:text-xl text-lg flex flex-row items-center 2md:gap-9 gap-5;
 }
 .text-link span {
-  @apply m-auto;
+  @apply m-auto lg:w-full w-1/2;
 }
 
 .section {
-  @apply px-[200px] py-[70px];
+  @apply 2md:px-[200px] sm:px-[100px] px-0 2md:py-[70px] py-4 sm:py-[45px];
 }
 .section-container {
-  @apply relative flex flex-col items-start gap-5;
+  @apply relative flex flex-col items-start gap-5 md:pt-0 pt-12;
 }
 
 .section-title {
-  @apply text-[45px] font-bold text-neutral-primary;
+  @apply 2md:text-[45px] text-[40px] font-bold text-neutral-primary;
 }
 
 .story-section {
@@ -126,7 +126,7 @@ a {
 }
 
 .intro {
-  @apply w-2/3 text-xl text-neutral-primary leading-[35px];
+  @apply md:w-2/3 w-full md:text-xl text-lg text-neutral-primary leading-[35px];
 }
 
 .section-description {
@@ -138,7 +138,10 @@ a {
 }
 
 .project-item {
-  @apply grid grid-cols-2 items-center px-[200px] py-10 gap-6 justify-between bg-[#E5E8EF] hover:bg-white;
+  @apply grid md:grid-cols-2 grid-rows-2 grid-flow-dense md:items-center items-start 2md:px-[200px] sm:px-[100px] px-0 py-5 2md:gap-6 gap-4 justify-between hover:bg-[#E5E8EF] bg-white;
+}
+.block:last-child {
+  @apply md:order-1 -order-1;
 }
 
 .reverse {
@@ -146,7 +149,7 @@ a {
 }
 
 .project-intro {
-  @apply flex flex-col items-start p-0 gap-[10px] w-full;
+  @apply flex flex-col items-start p-0 2md:gap-[10px] gap-2 w-full;
 }
 
 .project-name {
@@ -154,7 +157,7 @@ a {
 }
 .project-name,
 .project-desc {
-  @apply py-[10px] text-neutral-primary;
+  @apply md:py-[10px] py-2 text-neutral-primary;
 }
 
 .project-desc {
@@ -174,6 +177,13 @@ a {
 .sources a svg {
   @apply text-[#5E5E5E] hover:text-neutral-primary;
 }
+.image-container {
+  @apply block shadow-xl;
+}
+
+.image-container span {
+  @apply sm:h-full h-2/3;
+}
 
 .section-contact {
   @apply relative bg-neutral-primary w-full;
@@ -184,33 +194,33 @@ a {
 }
 .contact h1,
 .contact p {
-  @apply text-white;
+  @apply text-white text-center;
 }
 
 .contact-desc {
-  @apply text-xl font-normal text-center;
+  @apply 2md:text-xl text-base sm:text-lg font-normal text-center;
 }
 
 .email-link {
-  @apply px-[30px] py-[15px] bg-[#e5e8ef] hover:bg-[#e5e8ef93] rounded-[20px] text-xl text-center text-neutral-primary  font-semibold;
+  @apply 2md:px-[30px] sm:px-[25px] px-[15px] 2md:py-[15px] sm:py-3 py-[10px] bg-[#e5e8ef] hover:bg-[#e5e8ef93] rounded-[20px] md:text-xl sm:text-lg text-base  text-neutral-primary  font-semibold;
 }
 
 .footer {
   @apply py-[33px] px-[10px] text-center bg-neutral-primary;
 }
 .footer p {
-  @apply font-normal text-lg text-white;
+  @apply font-normal 2md:text-lg text-base text-white;
 }
 .footer p a {
   @apply text-white hover:text-gray-text;
 }
 
 #scroll-top {
-  @apply fixed right-[5.1rem] bottom-12;
+  @apply fixed 2md:right-[5.1rem] sm:right-14 right-8 bottom-12;
 }
 
 .text-link-top {
-  @apply relative text-[#5E5E5E]  font-normal text-xl flex flex-row-reverse items-center gap-9;
+  @apply relative text-[#5E5E5E]  font-normal 2md:text-xl text-lg flex flex-row-reverse items-center gap-9;
   writing-mode: vertical-rl;
   transform: rotate(90deg);
 }

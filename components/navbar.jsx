@@ -19,7 +19,7 @@ export default function Navbar() {
 
   return (
     <header className='navigation-main'>
-      <div className='container'>
+      <div className='container mx-auto'>
         <div className='relative flex items-center justify-between'>
           <div className='px-4'>
             <Link href='/'>

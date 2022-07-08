@@ -10,11 +10,12 @@ export default function Header() {
           <br />
           Front-end Developer.
         </h1>
-        <p className='description transition-all'>
-          A self-taught developer with an interest in visual design and <br />{' '}
-          building exceptional digital experiences.
-        </p>
-
+        <div className='md:w-2/3 w-full'>
+          <p className='description transition-all'>
+            A self-taught developer with an interest in visual design and
+            building exceptional digital experiences.
+          </p>
+        </div>
         <div className='relative inline-block'>
           <div className='btn-email'>
             <Link href='mailto:roisfaozi5@gmail.com'>

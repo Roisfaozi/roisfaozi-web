@@ -3,7 +3,7 @@ export default function Story() {
     <section className='section section-container' id='story'>
       <h2 className='section-title'>Story</h2>
       <div className='story-section'>
-        <div className='w-1/3'></div>
+        <div className='md:w-1/3 w-0'></div>
         <p className='intro'>
           Hi! I'm Rois Faozi. I have a strong passion for technology. I
           specialize in Front End Development and my passion is all about

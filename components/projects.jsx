@@ -6,8 +6,10 @@ import staycation from '../assets/staycation.png'
 export default function Projects() {
   return (
     <section className='section-container py-[70px]' id='projects'>
-      <h2 className='section-title pl-[200px]'>My Creative Works</h2>
-      <p className='section-description pl-[200px] pb-[85px]'>
+      <h2 className='section-title 2md:px-[200px] sm:px-[100px] px-0'>
+        My Creative Works
+      </h2>
+      <p className='section-description 2md:px-[200px] sm:px-[100px] px02 2md:pb-[85px] md:pb-12 pb-6'>
         These are a selection of my recent works.
       </p>
       <div className='project-section'>
@@ -71,7 +73,7 @@ export default function Projects() {
               </Link>
             </div>
           </div>
-          <div className='block shadow-xl'>
+          <div className='image-container'>
             <Image
               src={`${nonton.src}`}
               alt={'staycation'}

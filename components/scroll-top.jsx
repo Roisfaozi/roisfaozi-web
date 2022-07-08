@@ -24,9 +24,9 @@ export default function ScrollTop() {
         document.body.scrollTop > 2300 ||
         document.documentElement.scrollTop > 2300
       ) {
-        scrollRef.current.classList.add('animate-pulse')
+        scrollRef.current.classList.add('animate-bounce')
       } else {
-        scrollRef.current.classList.remove('animate-pulse')
+        scrollRef.current.classList.remove('animate-bounce')
       }
     }
     window.addEventListener('scroll', animateScroll)
@@ -42,12 +42,11 @@ export default function ScrollTop() {
     }
   }, [])
   return (
-    <div id='scroll-top' className={`${isVisible ? 'block' : 'hidden'}`}>
-      <button
-        ref={scrollRef}
-        type='button'
-        onClick={scrollToTop}
-        className='text-link-top'>
+    <div
+      ref={scrollRef}
+      id='scroll-top'
+      className={`${isVisible ? 'block' : 'hidden'}`}>
+      <button type='button' onClick={scrollToTop} className='text-link-top'>
         Top
         <span>
           <svg
