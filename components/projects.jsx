@@ -3,7 +3,6 @@ import becare from '../assets/becare.png'
 import nonton from '../assets/nonton.png'
 import staycation from '../assets/staycation.png'
 export default function Projects() {
-  console.log(becare)
   return (
     <section className='section-container py-[70px]' id='projects'>
       <h2 className='section-title 2md:px-[200px] sm:px-[100px] px-0'>
