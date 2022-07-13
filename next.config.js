@@ -23,6 +23,7 @@ module.exports = withPWA({
     dynamicStartUrl: false,
   },
   reactStrictMode: true,
+  target: 'serverless',
   exportPathMap: async function (
     defaultPathMap,
     { dev, dir, outDir, distDir, buildId }
