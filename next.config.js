@@ -1,7 +1,7 @@
 const withPWA = require('next-pwa')
 const runtimeCaching = require('next-pwa/cache')
 module.exports = withPWA({
-  content: [
+  purge: [
     './pages/**/*.tsx',
     './pages/**/*.js',
     './pages/**/*.ts',
@@ -23,7 +23,6 @@ module.exports = withPWA({
     dynamicStartUrl: false,
   },
   reactStrictMode: true,
-  distDir: 'out',
   target: 'serverless',
   exportPathMap: async function (
     defaultPathMap,
