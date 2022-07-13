@@ -23,7 +23,9 @@ export default function Navbar() {
         <div className='relative flex items-center justify-between'>
           <div className='px-4'>
             <Link href='/'>
-              <a className='block py-6 text-lg font-bold text-primary'>
+              <a
+                alt='home'
+                className='block py-6 text-lg font-bold text-primary'>
                 <svg
                   width='73'
                   height='32'
@@ -44,6 +46,7 @@ export default function Navbar() {
           </div>
           <div className='hamburger-wrapper'>
             <button
+              aria-label='Menu'
               ref={btnRef}
               id='hamburger'
               name='hamburger'

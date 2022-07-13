@@ -1,6 +1,5 @@
 const withPWA = require('next-pwa')
 const runtimeCaching = require('next-pwa/cache')
-
 module.exports = withPWA({
   purge: [
     './pages/**/*.tsx',
@@ -11,14 +10,11 @@ module.exports = withPWA({
     './components/**/*.ts',
   ],
 
-  i18n: {
-    locales: ['en'],
-    defaultLocale: 'en',
-  },
   images: {
-    domains: ['image.tmdb.org'],
     formats: ['image/avif', 'image/webp'],
+    unoptimized: true,
   },
+
   pwa: {
     dest: 'public',
     skipWaiting: true,
@@ -27,4 +23,12 @@ module.exports = withPWA({
     dynamicStartUrl: false,
   },
   reactStrictMode: true,
+  exportPathMap: async function (
+    defaultPathMap,
+    { dev, dir, outDir, distDir, buildId }
+  ) {
+    return {
+      '/': { page: '/' },
+    }
+  },
 })

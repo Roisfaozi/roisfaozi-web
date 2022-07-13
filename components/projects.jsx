@@ -1,9 +1,9 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import becare from '../assets/becare.png'
 import nonton from '../assets/nonton.png'
 import staycation from '../assets/staycation.png'
 export default function Projects() {
+  console.log(becare)
   return (
     <section className='section-container py-[70px]' id='projects'>
       <h2 className='section-title 2md:px-[200px] sm:px-[100px] px-0'>
@@ -74,13 +74,12 @@ export default function Projects() {
             </div>
           </div>
           <div className='image-container'>
-            <Image
-              src={`${nonton.src}`}
-              alt={'staycation'}
+            <img
+              src={nonton.src}
+              alt={'nonton'}
               layout='responsive'
               width={508}
               height={287}
-              priority={true}
             />
           </div>
         </div>
@@ -144,13 +143,13 @@ export default function Projects() {
               </Link>
             </div>
           </div>
-          <div className='block'>
-            <Image
-              src={`${becare.src}`}
-              alt={'staycation'}
+          <div className='image-container'>
+            <img
+              src={becare.src}
+              alt={'becare'}
+              layout='responsive'
               width={508}
               height={287}
-              priority={true}
             />
           </div>
         </div>
@@ -215,13 +214,13 @@ export default function Projects() {
               </Link>
             </div>
           </div>
-          <div className='block'>
-            <Image
-              src={`${staycation.src}`}
+          <div className='image-container'>
+            <img
+              src={staycation.src}
               alt={'staycation'}
+              layout='responsive'
               width={508}
               height={287}
-              priority={true}
             />
           </div>
         </div>

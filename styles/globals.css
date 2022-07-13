@@ -134,14 +134,14 @@ a {
 }
 
 .project-section {
-  @apply relative flex flex-col items-start;
+  @apply relative flex flex-col items-start gap-5;
 }
 
 .project-item {
-  @apply grid md:grid-cols-2 grid-rows-2 grid-flow-dense md:items-center items-start 2md:px-[200px] sm:px-[100px] px-0 py-5 2md:gap-6 gap-4 justify-between hover:bg-[#E5E8EF] bg-white;
+  @apply grid md:grid-cols-2 grid-flow-dense md:items-center items-start 2md:px-[200px] sm:px-[100px] px-0 py-5 2md:gap-6 gap-4 justify-between hover:bg-[#E5E8EF] bg-white;
 }
-.block:last-child {
-  @apply md:order-1 -order-1;
+.project-item:nth-child(even) .image-container:last-child {
+  @apply md:-order-1 order-1;
 }
 
 .reverse {

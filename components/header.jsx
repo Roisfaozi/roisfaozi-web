@@ -5,7 +5,7 @@ export default function Header() {
     <section className='header'>
       <div className='header-wrapper  '>
         <p>Hello, My name is</p>
-        <h1 className='header-title transition ease-in-out duration-700 hover:-translate-y-1'>
+        <h1 className='header-title'>
           Rois Faozi.
           <br />
           Front-end Developer.
