@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import becare from '../assets/becare.png'
-import nonton from '../assets/nonton.png'
-import staycation from '../assets/staycation.png'
+import becare from '../assets/becare.avifs'
+import nonton from '../assets/nonton.avifs'
+import staycation from '../assets/staycation.avifs'
 export default function Projects() {
   return (
     <section className='section-container py-[70px]' id='projects'>
@@ -74,7 +74,7 @@ export default function Projects() {
           </div>
           <div className='image-container'>
             <img
-              src={nonton.src}
+              src={nonton}
               alt={'nonton'}
               layout='responsive'
               width={508}
@@ -144,7 +144,7 @@ export default function Projects() {
           </div>
           <div className='image-container'>
             <img
-              src={becare.src}
+              src={becare}
               alt={'becare'}
               layout='responsive'
               width={508}
@@ -215,7 +215,7 @@ export default function Projects() {
           </div>
           <div className='image-container'>
             <img
-              src={staycation.src}
+              src={staycation}
               alt={'staycation'}
               layout='responsive'
               width={508}

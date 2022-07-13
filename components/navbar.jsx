@@ -25,6 +25,7 @@ export default function Navbar() {
             <Link href='/'>
               <a
                 alt='home'
+                aria-label='home'
                 className='block py-6 text-lg font-bold text-primary'>
                 <svg
                   width='73'
