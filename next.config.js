@@ -1,7 +1,7 @@
 const withPWA = require('next-pwa')
 const runtimeCaching = require('next-pwa/cache')
 module.exports = withPWA({
-  purge: [
+  content: [
     './pages/**/*.tsx',
     './pages/**/*.js',
     './pages/**/*.ts',
