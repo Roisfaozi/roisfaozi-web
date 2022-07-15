@@ -1,9 +1,21 @@
 import Head from 'next/head'
+import Script from 'next/script'
 import 'tailwindcss/tailwind.css'
 import '../styles/globals.css'
 export default function MyApp({ Component, pageProps }) {
   return (
     <>
+      <Script
+        strategy='lazyOnload'
+        src={`https://www.googletagmanager.com/gtag/js?id=G-5YEYZQRFZY`}
+      />
+      <Script strategy='lazyOnload'>
+        {`window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5YEYZQRFZY');`}
+      </Script>
       <Head>
         <meta charSet='utf-8' />
         <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
@@ -21,7 +33,10 @@ export default function MyApp({ Component, pageProps }) {
           content='hire front end developer, Front end Developer, rois faozi, react developer, javascript developer, Front end Developer skills, junior front end developer, front end developer resume, build website from scratch, '
         />
         <title>Rois Faozi | Front end Developer</title>
-
+        <meta
+          name='google-site-verification'
+          content='ddhhfnmyDg0wvJYkBFXYDLkdfYpsU195tvAYxH0kB1I'
+        />
         <meta property='og:locale' content='id_id' />
         <meta property='og:site_name' content="Rois Faozi's Portfolio"></meta>
         <meta property='og:type' content='website' />
