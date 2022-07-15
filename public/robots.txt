@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://nonton.vercel.app
+Host: https://roisfaozi.com/
 
 # Sitemaps
-Sitemap: https://nonton.vercel.app/sitemap.xml
+Sitemap: https://roisfaozi.com/sitemap.xml

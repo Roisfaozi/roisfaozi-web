@@ -82,7 +82,7 @@ export default function Projects() {
             />
           </div>
         </div>
-        <div className='project-item reverse'>
+        <div className='project-item'>
           <div className='project-intro'>
             <h3 className='project-name'>BeCare</h3>
             <p className='project-desc'>
