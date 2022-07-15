@@ -68,7 +68,7 @@ a {
 }
 
 .nav-menu-link {
-  @apply mx-8 text-center justify-center flex py-2 font-normal 2md:text-xl text-4xl text-gray-text group-hover:text-neutral-primary dark:text-white;
+  @apply mx-8 text-center justify-center flex py-2 font-normal 2md:text-xl text-xl text-gray-text group-hover:text-neutral-primary;
 }
 
 .header {

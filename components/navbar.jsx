@@ -16,7 +16,7 @@ export default function Navbar() {
       document.body.removeEventListener('click', closeNemu)
     }
   }, [])
-
+  console.log(open)
   return (
     <header className='navigation-main'>
       <div className='container mx-auto'>
@@ -72,7 +72,7 @@ export default function Navbar() {
                     open
                       ? ' transition duration-500 translate-x-6 ease-in-out'
                       : ''
-                  } group bg-white`}>
+                  } group bg-white h-full`}>
                   <a href='#home' className='nav-menu-link'>
                     Home
                   </a>
@@ -82,7 +82,7 @@ export default function Navbar() {
                     open
                       ? ' transition duration-600 translate-x-6 ease-in-out'
                       : ''
-                  } group bg-white`}>
+                  } group bg-white h-full`}>
                   <a href='#story' className='nav-menu-link'>
                     About
                   </a>
@@ -92,7 +92,7 @@ export default function Navbar() {
                     open
                       ? ' transition duration-700 translate-x-6 ease-in-out'
                       : ''
-                  } group bg-white`}>
+                  } group bg-white h-full`}>
                   <a href='#projecta' className='nav-menu-link'>
                     Project
                   </a>
@@ -103,7 +103,7 @@ export default function Navbar() {
                     open
                       ? ' transition duration-[800ms] translate-x-6 ease-in-out'
                       : ''
-                  } group bg-white`}>
+                  } group bg-white h-full`}>
                   <a href='#contact' className='nav-menu-link'>
                     Contact
                   </a>
