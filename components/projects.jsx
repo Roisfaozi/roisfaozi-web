@@ -5,7 +5,7 @@ import staycation from '../assets/staycation.avifs'
 export default function Projects() {
   return (
     <section className='section-container py-[70px]' id='projects'>
-      <h2 className='section-title 2md:px-[200px] sm:px-[100px] px-0'>
+      <h2 className='section-title 2md:px-[200px] sm:px-[100px] px-2'>
         My Creative Works
       </h2>
       <p className='section-description 2md:px-[200px] sm:px-[100px] px02 2md:pb-[85px] md:pb-12 pb-6'>
@@ -76,7 +76,7 @@ export default function Projects() {
             <img
               src={nonton}
               alt={'nonton'}
-              layout='responsive'
+              className='w-full'
               width={508}
               height={287}
             />
@@ -146,7 +146,7 @@ export default function Projects() {
             <img
               src={becare}
               alt={'becare'}
-              layout='responsive'
+              className='w-full'
               width={508}
               height={287}
             />
@@ -217,7 +217,7 @@ export default function Projects() {
             <img
               src={staycation}
               alt={'staycation'}
-              layout='responsive'
+              className='w-full'
               width={508}
               height={287}
             />

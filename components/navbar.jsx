@@ -12,11 +12,11 @@ export default function Navbar() {
     }
 
     document.body.addEventListener('click', closeNemu)
+
     return () => {
       document.body.removeEventListener('click', closeNemu)
     }
   }, [])
-  console.log(open)
   return (
     <header className='navigation-main'>
       <div className='container mx-auto'>
