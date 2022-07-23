@@ -16,9 +16,9 @@ export default function Projects() {
           <div className='project-intro'>
             <h3 className='project-name'>Nonton</h3>
             <p className='project-desc'>
-              Nonton is an React JS SEO friendly web application that lets you
-              browse for movies and tv-shows. You can watch trailers, browse
-              collection and discover upcoming or trending movies.
+              Nonton is a React JS SEO-friendly web application that lets you
+              browse for movies and tv-shows. You can watch trailers, browse the
+              collection and discover upcoming or trending films.
             </p>
             <div className='technology'>
               <p>React JS</p>
@@ -87,9 +87,8 @@ export default function Projects() {
             <h3 className='project-name'>BeCare</h3>
             <p className='project-desc'>
               BeCare is a web-based application to identify health conditions.
-              This application can help you to find out your health conditions
-              such as Diabetes, Obesity and blood sugar levels. Developed by
-              Rois Faozi.
+              This application can help you determine your health conditions,
+              such as Diabetes, Obesity, and blood sugar levels.
             </p>
             <div className='technology'>
               <p>React JS</p>
@@ -156,7 +155,7 @@ export default function Projects() {
           <div className='project-intro'>
             <h3 className='project-name'>Staycation</h3>
             <p className='project-desc'>
-              Porject Staycation is MERN Stack website which provides hotel and
+              Project Staycation is a MERN Stack website that provides hotel and
               tour booking services for vacations without thinking about finding
               a place to stay close to tourist attractions.
             </p>
