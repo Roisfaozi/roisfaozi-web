@@ -19,7 +19,7 @@ export default function Header() {
         <div className='relative inline-block'>
           <div className='btn-email'>
             <Link href='mailto:roisfaozi5@gmail.com'>
-              <a>roisfaozi5@gmail.com</a>
+              <a>roisfaozi8@gmail.com</a>
             </Link>
           </div>
         </div>
