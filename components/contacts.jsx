@@ -1,4 +1,3 @@
-import Link from 'next/link'
 
 export default function Contacts() {
   return (
@@ -12,9 +11,9 @@ export default function Contacts() {
           <br />
           I’ll try my best to get back to you!
         </p>
-        <Link href='mailto:roisfaozi8@gmail.com'>
-          <a className='email-link'>Say Hello</a>
-        </Link>
+        <a href='mailto:roisfaozi8@gmail.com' className='email-link'>
+          Say Hello
+        </a>
       </div>
     </section>
   )

@@ -1,7 +1,6 @@
-import Link from 'next/link'
-import becare from '../assets/becare.avifs'
-import nonton from '../assets/nonton.avifs'
-import staycation from '../assets/staycation.avifs'
+import becare from '../assets/becare.avif'
+import nonton from '../assets/nonton.avif'
+import staycation from '../assets/staycation.avif'
 export default function Projects() {
   return (
     <section className='section-container py-[70px]' id='projects'>
@@ -29,8 +28,7 @@ export default function Projects() {
               <p>Vercel</p>
             </div>
             <div className='sources'>
-              <Link href='https://github.com/Roisfaozi/nonton'>
-                <a aria-label='External Link' target='_blank'>
+              <a href='https://github.com/Roisfaozi/nonton' aria-label='External Link' target='_blank' rel='noreferrer'>
                   <svg
                     width='24'
                     height='24'
@@ -46,9 +44,7 @@ export default function Projects() {
                     />
                   </svg>
                 </a>
-              </Link>
-              <Link href='https://nonton.vercel.app'>
-                <a aria-label='External Link' target='_blank'>
+              <a href='https://nonton.vercel.app' aria-label='External Link' target='_blank' rel='noreferrer'>
                   <svg
                     width='24'
                     height='24'
@@ -69,12 +65,11 @@ export default function Projects() {
                     />
                   </svg>
                 </a>
-              </Link>
             </div>
           </div>
           <div className='image-container'>
             <img
-              src={nonton}
+              src={nonton.src}
               alt={'nonton'}
               className='w-full'
               width={508}
@@ -98,8 +93,7 @@ export default function Projects() {
               <p>Netlify</p>
             </div>
             <div className='sources'>
-              <Link href='https://github.com/Roisfaozi/becare'>
-                <a aria-label='External Link' target='_blank'>
+              <a href='https://github.com/Roisfaozi/becare' aria-label='External Link' target='_blank' rel='noreferrer'>
                   <svg
                     width='24'
                     height='24'
@@ -115,9 +109,7 @@ export default function Projects() {
                     />
                   </svg>
                 </a>
-              </Link>
-              <Link href='https://becare.netlify.app/'>
-                <a aria-label='External Link' target='_blank'>
+              <a href='https://becare.netlify.app/' aria-label='External Link' target='_blank' rel='noreferrer'>
                   <svg
                     width='24'
                     height='24'
@@ -138,12 +130,11 @@ export default function Projects() {
                     />
                   </svg>
                 </a>
-              </Link>
             </div>
           </div>
           <div className='image-container'>
             <img
-              src={becare}
+              src={becare.src}
               alt={'becare'}
               className='w-full'
               width={508}
@@ -169,8 +160,7 @@ export default function Projects() {
               <p>Netlify</p>
             </div>
             <div className='sources'>
-              <Link href='https://github.com/Roisfaozi/staycation-MERN'>
-                <a aria-label='External Link' target='_blank'>
+              <a href='https://github.com/Roisfaozi/staycation-MERN' aria-label='External Link' target='_blank' rel='noreferrer'>
                   <svg
                     width='24'
                     height='24'
@@ -186,9 +176,7 @@ export default function Projects() {
                     />
                   </svg>
                 </a>
-              </Link>
-              <Link href='https://liburan.netlify.app/'>
-                <a aria-label='External Link' target='_blank'>
+              <a href='https://liburan.netlify.app/' aria-label='External Link' target='_blank' rel='noreferrer'>
                   <svg
                     width='24'
                     height='24'
@@ -209,12 +197,11 @@ export default function Projects() {
                     />
                   </svg>
                 </a>
-              </Link>
             </div>
           </div>
           <div className='image-container'>
             <img
-              src={staycation}
+              src={staycation.src}
               alt={'staycation'}
               className='w-full'
               width={508}

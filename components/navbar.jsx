@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 
@@ -6,7 +8,7 @@ export default function Navbar() {
   const btnRef = useRef()
   useEffect(() => {
     const closeNemu = (e) => {
-      if (e.path[1] !== btnRef.current) {
+      if (!btnRef.current?.contains(e.target)) {
         setOpen(false)
       }
     }
@@ -22,11 +24,10 @@ export default function Navbar() {
       <div className='container mx-auto'>
         <div className='relative flex items-center justify-between'>
           <div className='px-4'>
-            <Link href='/'>
-              <a
-                alt='home'
-                aria-label='home'
-                className='block py-6 text-lg font-bold text-primary'>
+            <Link
+              href='/'
+              aria-label='home'
+              className='block py-6 text-lg font-bold text-primary'>
                 <svg
                   width='73'
                   height='32'
@@ -42,7 +43,6 @@ export default function Navbar() {
                     fill='#191919'
                   />
                 </svg>
-              </a>
             </Link>
           </div>
           <div className='hamburger-wrapper'>

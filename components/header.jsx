@@ -1,8 +1,7 @@
-import Link from 'next/link'
 
 export default function Header() {
   return (
-    <section className='header'>
+    <section className='header' id='home'>
       <div className='header-wrapper  '>
         <p>Hello, My name is</p>
         <h1 className='header-title'>
@@ -18,9 +17,7 @@ export default function Header() {
         </div>
         <div className='relative inline-block'>
           <div className='btn-email'>
-            <Link href='mailto:roisfaozi8@gmail.com'>
-              <a>roisfaozi8@gmail.com</a>
-            </Link>
+            <a href='mailto:roisfaozi8@gmail.com'>roisfaozi8@gmail.com</a>
           </div>
         </div>
         <div id='scroll'>

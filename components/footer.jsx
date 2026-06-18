@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useState } from 'react'
 
 export default function Footer() {
@@ -5,7 +7,7 @@ export default function Footer() {
   const year = new Date().getFullYear()
   useEffect(() => {
     setPageURL(window.location.origin)
-  })
+  }, [])
   return (
     <footer className='footer'>
       <p>
