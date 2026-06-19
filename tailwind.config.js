@@ -13,14 +13,15 @@ export default {
     extend: {
       colors: {
         gray: {
-          text: '#8B8B93',
+          text: '#a1a1aa', // zinc-400
         },
         neutral: {
-          primary: '#191919',
+          primary: '#09090b', // zinc-950
         },
       },
       fontFamily: {
-        sans: ['Manrope', 'system-ui', 'sans-serif'],
+        sans: ['"Geist Sans"', 'system-ui', 'sans-serif'],
+        mono: ['"Geist Mono"', 'monospace'],
       },
     },
   },
