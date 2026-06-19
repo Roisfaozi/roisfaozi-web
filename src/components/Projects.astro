@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content'
+
+const projects = (await getCollection('projects'))
+  .sort((left, right) => left.data.order - right.data.order)
+  .filter((project) => project.data.featured)
+---
+<section class="section-container py-[70px]" id="projects">
+  <h2 class="section-title 2md:px-[200px] sm:px-[100px] px-2">My Creative Works</h2>
+  <p class="section-description 2md:px-[200px] sm:px-[100px] px-2 2md:pb-[85px] md:pb-12 pb-6">
+    These are a selection of my recent works.
+  </p>
+  <div class="project-section">
+    {projects.map((project) => (
+      <div class="project-item">
+        <div class="project-intro">
+          <h3 class="project-name">{project.data.title}</h3>
+          <p class="project-desc">{project.data.description}</p>
+          <div class="technology">
+            {project.data.technologies.map((tech) => <p>{tech}</p>)}
+          </div>
+          <div class="sources">
+            {project.data.links.github && <a href={project.data.links.github} aria-label={`${project.data.title} GitHub`} target="_blank" rel="noreferrer">GitHub</a>}
+            {project.data.links.live && <a href={project.data.links.live} aria-label={`${project.data.title} Live Site`} target="_blank" rel="noreferrer">Live Site</a>}
+          </div>
+        </div>
+        <div class="image-container">
+          <img src={project.data.image} alt={project.data.title} class="w-full" width="508" height="287" />
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

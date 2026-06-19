@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html,
+body {
+  @apply p-0 m-0 overflow-x-hidden;
+  font-family: Manrope, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  scroll-behavior: smooth;
+}
+
+a {
+  @apply text-gray-text hover:text-neutral-primary no-underline;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.navigation {
+  @apply fixed w-full flex justify-between bg-white top-0 z-50;
+}
+
+.navigation-main {
+  @apply absolute top-0 left-0 z-10 flex w-full items-center bg-transparent 2md:px-[120px] sm:px-4 sm:py-3 px-0 py-2 2md:py-[10px];
+}
+
+.hamburger-wrapper {
+  @apply flex items-center px-4;
+}
+
+/* Hamburger */
+.hamburger-line {
+  @apply block w-[30px] h-[2px] my-2 bg-black;
+}
+
+.hamburger-active > span:nth-child(1) {
+  --tw-rotate: 45deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hamburger-active > span:nth-child(2) {
+  --tw-scale-x: 0;
+  --tw-scale-y: 0;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hamburger-active > span:nth-child(3) {
+  --tw-rotate: -45deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.logo {
+  @apply block py-6;
+}
+
+.nav-menu {
+  @apply absolute top-full w-full rounded-lg py-0 md:py-5 2md:static 2md:block 2md:max-w-full 2md:rounded-none 2md:bg-transparent right-5 2md:shadow-none;
+}
+
+.nav-menu-link {
+  @apply mx-8 text-center justify-center flex py-2 font-normal 2md:text-xl text-xl text-gray-text group-hover:text-neutral-primary;
+}
+
+.header {
+  @apply relative m-0 pt-[70px];
+}
+
+.header-wrapper {
+  @apply relative flex flex-col w-full h-full overflow-hidden items-start 2md:px-[200px] sm:px-[100px] px-2 2md:py-[70px] py-4 sm:py-[45px] md:gap-3 gap-5;
+}
+.header-wrapper p {
+  @apply text-gray-text font-normal 2md:text-[25px] text-xl leading-[35px];
+}
+
+.header-title {
+  @apply font-bold lg:text-[80px] 2md:text-[50px] sm:text-5xl text-4xl text-neutral-primary;
+}
+
+.header-wrapper .description,
+.description {
+  @apply md:text-xl text-base md:pb-4 pb-0;
+}
+
+.btn-email {
+  @apply inline-flex items-center pt-[10px] before:absolute  before:md:w-[50px] before:md:h-[50px] before:w-[40px] before:h-[40px] before:bg-[#E5E8EF] before:rounded-[50%] before:md:top-0 before:top-0 before:bottom-0;
+}
+
+.btn-email a {
+  @apply relative font-semibold md:text-xl text-base text-neutral-primary pl-[25px];
+}
+
+#scroll {
+  @apply absolute 2md:right-[110px] md:right-[50px] right-[20px] bottom-4 md:block hidden;
+}
+
+.text-link {
+  @apply relative text-[#5E5E5E] font-normal lg:text-xl text-lg flex flex-row items-center 2md:gap-9 gap-5;
+}
+.text-link span {
+  @apply m-auto lg:w-full w-1/2;
+}
+
+.section {
+  @apply 2md:px-[200px] sm:px-[100px] px-2 2md:py-[70px] py-4 sm:py-[45px];
+}
+.section-container {
+  @apply relative flex flex-col items-start gap-5 md:pt-0 pt-12;
+}
+
+.section-title {
+  @apply 2md:text-[45px] text-[40px] font-bold text-neutral-primary;
+}
+
+.story-section {
+  @apply flex flex-row justify-end items-start;
+}
+
+.intro {
+  @apply md:w-2/3 w-full md:text-xl text-lg text-neutral-primary leading-[35px];
+}
+
+.section-description {
+  @apply text-xl text-gray-text;
+}
+
+.project-section {
+  @apply relative flex flex-col items-start gap-5;
+}
+
+.project-item {
+  @apply md:grid md:grid-cols-2 flex flex-col-reverse md:grid-flow-dense items-center lg:px-[200px] sm:px-[70px] px-2 py-5 2md:gap-6 gap-4 justify-between hover:bg-[#E5E8EF] bg-white;
+}
+.project-item:nth-child(even) .image-container:last-child {
+  @apply md:-order-1 order-1;
+}
+
+.reverse {
+  @apply flex-row-reverse;
+}
+
+.project-intro {
+  @apply flex flex-col items-start p-0 2md:gap-[10px] gap-2 w-full;
+}
+
+.project-name {
+  @apply font-bold text-3xl;
+}
+.project-name,
+.project-desc {
+  @apply md:py-[10px] py-2 text-neutral-primary;
+}
+
+.project-desc {
+  @apply text-xl font-normal;
+}
+
+.technology {
+  @apply flex flex-row pr-[10px] py-0 gap-[14px];
+}
+.technology p {
+  @apply font-normal text-sm text-neutral-primary;
+}
+
+.sources {
+  @apply flex p-[10px] gap-[10px];
+}
+.sources a svg {
+  @apply text-[#5E5E5E] hover:text-neutral-primary;
+}
+.image-container {
+  @apply block shadow-xl;
+}
+
+.image-container span {
+  @apply sm:h-full h-2/3;
+}
+
+.section-contact {
+  @apply relative bg-neutral-primary w-full;
+}
+
+.contact {
+  @apply py-[90px] relative flex flex-col items-center justify-center  gap-[54px];
+}
+.contact h1,
+.contact p {
+  @apply text-white text-center;
+}
+
+.contact-desc {
+  @apply 2md:text-xl text-base sm:text-lg font-normal text-center;
+}
+
+.email-link {
+  @apply 2md:px-[30px] sm:px-[25px] px-[15px] 2md:py-[15px] sm:py-3 py-[10px] bg-[#e5e8ef] hover:bg-[#e5e8ef93] rounded-[20px] md:text-xl sm:text-lg text-base  text-neutral-primary  font-semibold;
+}
+
+.footer {
+  @apply py-[33px] px-[10px] text-center bg-neutral-primary;
+}
+.footer p {
+  @apply font-normal 2md:text-lg text-base text-white;
+}
+.footer p a {
+  @apply text-white hover:text-gray-text;
+}
+
+#scroll-top {
+  @apply fixed 2md:right-[5.1rem] sm:right-14 right-8 bottom-12;
+}
+
+.text-link-top {
+  @apply relative text-[#5E5E5E]  font-normal 2md:text-xl text-lg flex flex-row-reverse items-center gap-9;
+  writing-mode: vertical-rl;
+  transform: rotate(90deg);
+}
+.text-link-top span {
+  @apply m-auto;
+  transform: rotate(-90deg);
+}
