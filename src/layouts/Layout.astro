@@ -2,19 +2,19 @@
 import '../styles/globals.css'
 
 const {
-  title = 'Rois Faozi — Frontend Developer & UI Engineer',
-  description = 'Portfolio of Rois Faozi, frontend developer and UI-focused web builder from Indonesia.',
+  title = 'Rois Faozi | Full-Stack Developer',
+  description = 'Portfolio of Rois Faozi, Full-Stack Developer specializing in enterprise-scale Go backends, secure financial solutions, and the Solana/Rust Web3 ecosystem.',
 } = Astro.props
 ---
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="author" content="Rois Faozi" />
-    <meta name="keywords" content="frontend developer, UI engineer, Astro developer, React developer, Indonesia web developer" />
-    <meta name="theme-color" content="#080b13" />
+    <meta name="keywords" content="full-stack developer, frontend developer, UI engineer, Astro developer, React developer, Golang architecture, Solana developer, Web3" />
+    <meta name="theme-color" content="#09090b" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -34,7 +34,7 @@ const {
       gtag('config', 'G-5YEYZQRFZY');
     </script>
   </head>
-  <body>
+  <body class="bg-neutral-primary text-zinc-300 min-h-[100dvh] flex flex-col">
     <slot />
   </body>
 </html>
