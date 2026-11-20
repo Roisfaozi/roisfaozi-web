@@ -1,0 +1,36 @@
+---
+import { Icon } from 'astro-icon/components'
+import { faqItems } from '../data/profile'
+---
+<section class="max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-24 border-t border-zinc-800/60" id="faq">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
+    <div class="lg:col-span-4 space-y-4">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-50">FAQ</h2>
+      <p class="text-base text-zinc-400 leading-relaxed max-w-[36ch]">
+        Direct answers on technical architecture, enterprise banking and healthcare systems, open-source work, and remote availability.
+      </p>
+    </div>
+
+    <div class="lg:col-span-8 space-y-4">
+      {faqItems.map((item, idx) => (
+        <details
+          open={idx === 0}
+          class="group rounded-2xl bg-zinc-900/35 border border-zinc-800/70 open:border-zinc-700/80 open:bg-zinc-900/55 transition-colors"
+        >
+          <summary class="flex items-center justify-between gap-4 p-6 cursor-pointer list-none [&::-webkit-details-marker]:hidden text-left">
+            <span class="text-base md:text-lg font-semibold text-zinc-100 group-hover:text-zinc-50 transition-colors">
+              {item.question}
+            </span>
+            <Icon
+              name="ph:caret-down"
+              class="w-4 h-4 shrink-0 text-zinc-400 transition-transform duration-200 group-open:rotate-180"
+            />
+          </summary>
+          <div class="px-6 pb-6 pt-0 text-sm md:text-base text-zinc-400 leading-relaxed border-t border-zinc-800/40 mt-1 pt-4">
+            <p>{item.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

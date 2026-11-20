@@ -307,3 +307,65 @@ export const credentials: Credential[] = [
     kind: 'certification',
   },
 ]
+
+export interface FaqItem {
+  question: string
+  answer: string
+}
+
+export const seoMeta = {
+  siteUrl: 'https://roisfaozi.com',
+  title: 'Rois Faozi | Full-Stack Developer (Go & TypeScript)',
+  description:
+    'Rois Faozi, Full-Stack Developer in Indonesia building Go backends, TypeScript apps, PostgreSQL tuning (90% faster), MQTT telemetry, and hospital QMS/EMR.',
+  keywords:
+    'Rois Faozi, Full-Stack Developer Indonesia, Remote Go Backend Engineer, Golang TypeScript Developer, PostgreSQL Query Optimization, Multi-Schema PostgreSQL, MQTT WebSockets Telemetry Go, Casbin RBAC OWASP Banking, Hospital Queue Management System QMS Go, SIMKlinik RME Permenkes 24/2022, SATUSEHAT BPJS Bridging, Carbon Manufacturing ERP crbnos/carbon, Inngest AI PDF Extraction',
+  ogImage: 'https://roisfaozi.com/og-image.png',
+  ogImageAlt:
+    'Rois Faozi - Full-Stack Developer specializing in Go, TypeScript, and Real-Time Enterprise Systems',
+  knowsAbout: [
+    'Go (Golang)',
+    'TypeScript',
+    'PostgreSQL Query Optimization',
+    'Multi-Schema PostgreSQL Architecture',
+    'Clean Architecture & DDD',
+    'MQTT & WebSockets Telemetry',
+    'Casbin RBAC & OWASP Security',
+    'Hospital Queue Management Systems (QMS)',
+    'Indonesian EMR / RME (Permenkes 24/2022, SATUSEHAT, BPJS)',
+    'React, Next.js & Vue 3',
+    'Node.js & NestJS',
+    'Inngest Background Event Pipelines',
+    'Docker, Nginx & CI/CD',
+    'AWS Cloud Developing',
+  ],
+} as const
+
+export const faqItems: FaqItem[] = [
+  {
+    question: 'What technologies and architectures does Rois Faozi specialize in?',
+    answer:
+      'Go (Chi, Gin, Fiber, pgx), TypeScript, React, Next.js, Vue 3, Node.js and NestJS, PostgreSQL query tuning and multi-schema isolation, Redis pub/sub, MQTT (Eclipse Paho), WebSockets, Docker, Nginx, Casbin RBAC, Clean Architecture, and AWS Cloud Developing.',
+  },
+  {
+    question: 'What enterprise banking and healthcare systems has Rois Faozi built?',
+    answer:
+      'Enterprise air-gapped IoT Device Management System (DMS) managing 40k+ devices and digital account onboarding workflows for Indonesian banking (state-owned commercial bank and Bank Muamalat), high-availability hospital Queue Management Systems (QMS) for Medistra Hospital and BitHealth at 99.9% uptime, and SASI SIMKlinik (dual-binary Go architecture with 6 isolated PostgreSQL schemas compliant with Permenkes 24/2022, SATUSEHAT, and BPJS bridging).',
+  },
+  {
+    question: 'How does Rois Faozi handle PostgreSQL performance optimization and enterprise security?',
+    answer:
+      'Profiles SQL bottlenecks under k6 load tests with Prometheus metrics and structured logging, achieving a 90% query latency reduction (from 9s down to 900ms), while enforcing menu-level Casbin RBAC, OWASP compliance, and isolated tenant storage that passed banking penetration testing with zero critical vulnerabilities.',
+  },
+  {
+    question: 'What open-source contributions has Rois Faozi authored?',
+    answer:
+      'Active contributor to Carbon Manufacturing ERP (crbnos/carbon, 2k+ GitHub stars): merged PR #866 (async group member fetching, server-side search, prefetch caching across 12 files), co-authored merged PR #1002 (AI-powered PDF extraction pipeline via Inngest across 20+ form endpoints), and proposed company-isolated private storage with signed URLs (PR #682), plus an open-source Go Clean Architecture and DDD starter with 85%+ SQLMock unit test coverage.',
+  },
+  {
+    question: 'Is Rois Faozi available for international remote full-stack or backend roles?',
+    answer:
+      'Yes. Based in Tangerang, Indonesia, Rois Faozi is open to remote full-stack engineering roles, Go backend architecture consulting, and technical collaborations, with proven cross-timezone delivery for teams in India, the UK, Norway, Morocco, and France.',
+  },
+]
+

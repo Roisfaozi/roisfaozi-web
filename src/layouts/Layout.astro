@@ -1,13 +1,118 @@
 ---
 import '../styles/globals.css'
-import { profile } from '../data/profile'
+import { getCollection } from 'astro:content'
+import { credentials, faqItems, profile, seoMeta } from '../data/profile'
 
 const {
-  title = `${profile.name} | ${profile.role}`,
-  description = 'Portfolio of Rois Faozi, Full-Stack Developer specializing in Go backends, TypeScript web apps, PostgreSQL tuning, and real-time enterprise banking and healthcare systems.',
+  title = seoMeta.title,
+  description = seoMeta.description,
 } = Astro.props
 
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site || 'https://roisfaozi.com').href
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') || seoMeta.siteUrl
+const canonicalUrl = new URL(Astro.url.pathname, `${siteUrl}/`).href
+
+const featuredProjects = (await getCollection('projects'))
+  .filter((project) => project.data.featured)
+  .sort((left, right) => left.data.order - right.data.order)
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      url: `${siteUrl}/`,
+      name: 'Rois Faozi Portfolio',
+      description,
+      inLanguage: 'en-US',
+      publisher: { '@id': `${siteUrl}/#person` },
+    },
+    {
+      '@type': 'ProfilePage',
+      '@id': `${siteUrl}/#profilepage`,
+      url: `${siteUrl}/`,
+      name: title,
+      description,
+      inLanguage: 'en-US',
+      dateModified: '2026-11-20',
+      isPartOf: { '@id': `${siteUrl}/#website` },
+      mainEntity: { '@id': `${siteUrl}/#person` },
+      primaryImageOfPage: {
+        '@type': 'ImageObject',
+        url: seoMeta.ogImage,
+        width: 1200,
+        height: 630,
+      },
+    },
+    {
+      '@type': 'Person',
+      '@id': `${siteUrl}/#person`,
+      name: profile.name,
+      url: `${siteUrl}/`,
+      image: seoMeta.ogImage,
+      email: `mailto:${profile.email}`,
+      jobTitle: 'Full-Stack Developer (Go & TypeScript)',
+      description,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Tangerang',
+        addressRegion: 'Banten',
+        addressCountry: 'ID',
+      },
+      sameAs: [profile.github, profile.linkedin],
+      worksFor: {
+        '@type': 'Organization',
+        name: 'PT. Sentuh Digital Teknologi',
+      },
+      alumniOf: {
+        '@type': 'CollegeOrUniversity',
+        name: 'Cyber University of Muhammadiyah',
+      },
+      hasCredential: credentials
+        .filter((item) => item.kind === 'certification')
+        .map((item) => ({
+          '@type': 'EducationalOccupationalCredential',
+          name: item.title,
+          recognizedBy: {
+            '@type': 'Organization',
+            name: item.issuer,
+          },
+        })),
+      knowsAbout: [...seoMeta.knowsAbout],
+    },
+    {
+      '@type': 'ItemList',
+      '@id': `${siteUrl}/#projects`,
+      name: 'Selected Engineering Projects by Rois Faozi',
+      itemListElement: featuredProjects.map((project, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': project.data.links.github ? 'SoftwareSourceCode' : 'CreativeWork',
+          name: project.data.title,
+          description: project.data.description,
+          keywords: project.data.technologies.join(', '),
+          image: new URL(project.data.image, `${siteUrl}/`).href,
+          author: { '@id': `${siteUrl}/#person` },
+          ...(project.data.links.github ? { codeRepository: project.data.links.github } : {}),
+          ...(project.data.links.live ? { url: project.data.links.live } : {}),
+        },
+      })),
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${siteUrl}/#faq`,
+      mainEntity: faqItems.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.answer,
+        },
+      })),
+    },
+  ],
+}
 ---
 <!doctype html>
 <html lang="en" class="scroll-smooth dark">
@@ -16,24 +121,52 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site || 'https://roisfaoz
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="author" content={profile.name} />
+    <meta name="keywords" content={seoMeta.keywords} />
     <meta
-      name="keywords"
-      content="full-stack developer, golang developer, Go backend engineer, TypeScript, React, Next.js, Vue.js, PostgreSQL, MQTT, WebSockets, Docker, Clean Architecture, AWS"
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     />
     <meta name="theme-color" content="#09090b" />
     <link rel="canonical" href={canonicalUrl} />
-    <meta property="og:type" content="website" />
+    <link
+      rel="preload"
+      as="image"
+      href="/images/hero-system.webp"
+      type="image/webp"
+      fetchpriority="high"
+    />
+    <link
+      rel="alternate"
+      type="text/plain"
+      href="/llms.txt"
+      title="LLMs.txt Profile Summary"
+    />
+    <link rel="me" href={profile.github} />
+    <link rel="me" href={profile.linkedin} />
+    <meta property="og:type" content="profile" />
+    <meta property="profile:first_name" content="Rois" />
+    <meta property="profile:last_name" content="Faozi" />
+    <meta property="profile:username" content="Roisfaozi" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content="Rois Faozi Portfolio" />
+    <meta property="og:image" content={seoMeta.ogImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={seoMeta.ogImageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={seoMeta.ogImage} />
+    <meta name="twitter:image:alt" content={seoMeta.ogImageAlt} />
     <link rel="manifest" href="/manifest.json" />
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-icon-180x180.png" />
     <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5YEYZQRFZY"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
