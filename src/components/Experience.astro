@@ -1,0 +1,186 @@
+---
+import { Icon } from 'astro-icon/components'
+import { credentials, experienceRoles } from '../data/profile'
+
+const totalCount = experienceRoles.length
+const enterpriseCount = experienceRoles.filter((role) => role.category === 'enterprise').length
+const contractCount = experienceRoles.filter((role) => role.category === 'contract').length
+---
+<section class="max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-24 border-t border-zinc-800/60" id="experience">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+    <div class="lg:col-span-4 lg:sticky lg:top-28 lg:self-start space-y-8">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-50 mb-4">Experience</h2>
+        <p class="text-base text-zinc-400 leading-relaxed max-w-[36ch]">
+          Full-stack, backend, and open-source career history across enterprise systems and global remote teams.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap gap-2" role="group" aria-label="Filter experience by category">
+        <button
+          type="button"
+          data-exp-filter="all"
+          aria-pressed="true"
+          class="exp-filter-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-zinc-100 text-zinc-950 font-semibold transition-colors active:scale-[0.98] whitespace-nowrap"
+        >
+          All ({totalCount})
+        </button>
+        <button
+          type="button"
+          data-exp-filter="enterprise"
+          aria-pressed="false"
+          class="exp-filter-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-zinc-900 border border-zinc-800 text-zinc-300 hover:border-zinc-700 transition-colors active:scale-[0.98] whitespace-nowrap"
+        >
+          Enterprise &amp; OSS ({enterpriseCount})
+        </button>
+        <button
+          type="button"
+          data-exp-filter="contract"
+          aria-pressed="false"
+          class="exp-filter-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-zinc-900 border border-zinc-800 text-zinc-300 hover:border-zinc-700 transition-colors active:scale-[0.98] whitespace-nowrap"
+        >
+          Remote Contracts ({contractCount})
+        </button>
+      </div>
+
+      <div class="space-y-5 pt-6 border-t border-zinc-800/70">
+        <h3 class="text-lg font-semibold text-zinc-100">Education &amp; Certifications</h3>
+        <div class="space-y-4">
+          {credentials.map((cred) => (
+            <div class="flex items-start gap-3">
+              <div class="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                <Icon
+                  name={cred.kind === 'education' ? 'ph:graduation-cap' : 'ph:certificate'}
+                  class="w-4 h-4"
+                />
+              </div>
+              <div>
+                <p class="text-sm font-medium text-zinc-100">{cred.title}</p>
+                <p class="text-xs text-zinc-400 mt-0.5">{cred.issuer}</p>
+                <p class="text-xs font-mono text-zinc-500 mt-1">{cred.period}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="lg:col-span-8 space-y-6 reveal-experience">
+      {experienceRoles.map((item) => (
+        <article
+          data-exp-category={item.category}
+          class={
+            item.category === 'enterprise'
+              ? 'rounded-2xl bg-zinc-900/55 border border-zinc-800/80 border-l-2 border-l-emerald-500 p-6 md:p-8 space-y-5'
+              : 'rounded-2xl bg-zinc-900/35 border border-zinc-800/70 p-6 md:p-7 space-y-5'
+          }
+        >
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+            <div>
+              <div class="flex flex-wrap items-center gap-2.5">
+                <h3 class="text-xl md:text-2xl font-bold text-zinc-50">{item.role}</h3>
+                <span
+                  class={
+                    item.category === 'enterprise'
+                      ? 'px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 whitespace-nowrap'
+                      : 'px-2.5 py-0.5 rounded-full text-xs font-medium bg-zinc-800/80 text-zinc-300 border border-zinc-700/60 whitespace-nowrap'
+                  }
+                >
+                  {item.badge}
+                </span>
+              </div>
+
+              {item.url ? (
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="inline-flex items-center gap-1.5 text-sm font-medium text-emerald-400 hover:text-emerald-300 mt-1.5"
+                >
+                  {item.company}
+                  <Icon name="ph:arrow-up-right" class="w-4 h-4" />
+                </a>
+              ) : (
+                <p class="text-sm font-medium text-emerald-400 mt-1.5">{item.company}</p>
+              )}
+            </div>
+
+            <div class="text-xs font-mono text-zinc-400 sm:text-right shrink-0">
+              <p>{item.period}</p>
+              <p class="text-zinc-500 mt-0.5">{item.location}</p>
+            </div>
+          </div>
+
+          <ul class="space-y-2 text-sm md:text-base text-zinc-400 leading-relaxed list-disc pl-4 marker:text-emerald-500/70">
+            {item.bullets.map((bullet) => (
+              <li>{bullet}</li>
+            ))}
+          </ul>
+
+          <div class="flex flex-wrap gap-1.5 pt-1">
+            {item.technologies.map((tech) => (
+              <span class="px-2.5 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-mono text-zinc-300">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+  gsap.registerPlugin(ScrollTrigger)
+
+  const mm = gsap.matchMedia()
+  mm.add('(prefers-reduced-motion: no-preference)', () => {
+    gsap.from('.reveal-experience > article', {
+      y: 28,
+      opacity: 0,
+      duration: 0.7,
+      stagger: 0.08,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.reveal-experience',
+        start: 'top 82%',
+        once: true,
+      },
+    })
+  })
+
+  const filterButtons = document.querySelectorAll<HTMLButtonElement>('[data-exp-filter]')
+  const roleCards = document.querySelectorAll<HTMLElement>('[data-exp-category]')
+
+  const activeClasses = ['bg-zinc-100', 'text-zinc-950', 'font-semibold']
+  const inactiveClasses = ['bg-zinc-900', 'border', 'border-zinc-800', 'text-zinc-300', 'hover:border-zinc-700']
+
+  filterButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const selected = button.dataset.expFilter ?? 'all'
+
+      filterButtons.forEach((btn) => {
+        const isActive = btn === button
+        btn.setAttribute('aria-pressed', isActive ? 'true' : 'false')
+        if (isActive) {
+          btn.classList.remove(...inactiveClasses)
+          btn.classList.add(...activeClasses)
+        } else {
+          btn.classList.remove(...activeClasses)
+          btn.classList.add(...inactiveClasses)
+        }
+      })
+
+      roleCards.forEach((card) => {
+        const category = card.dataset.expCategory
+        const shouldShow = selected === 'all' || category === selected
+        card.classList.toggle('hidden', !shouldShow)
+      })
+
+      ScrollTrigger.refresh()
+    })
+  })
+</script>
