@@ -1,10 +1,13 @@
 ---
 import '../styles/globals.css'
+import { profile } from '../data/profile'
 
 const {
-  title = 'Rois Faozi | Full-Stack Developer',
-  description = 'Portfolio of Rois Faozi, Full-Stack Developer specializing in enterprise-scale Go backends, secure financial solutions, and the Solana/Rust Web3 ecosystem.',
+  title = `${profile.name} | ${profile.role}`,
+  description = 'Portfolio of Rois Faozi, Full-Stack Developer specializing in Go backends, TypeScript web apps, PostgreSQL tuning, and real-time enterprise banking and healthcare systems.',
 } = Astro.props
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site || 'https://roisfaozi.com').href
 ---
 <!doctype html>
 <html lang="en" class="scroll-smooth dark">
@@ -12,10 +15,15 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta name="author" content="Rois Faozi" />
-    <meta name="keywords" content="full-stack developer, frontend developer, UI engineer, Astro developer, React developer, Golang architecture, Solana developer, Web3" />
+    <meta name="author" content={profile.name} />
+    <meta
+      name="keywords"
+      content="full-stack developer, golang developer, Go backend engineer, TypeScript, React, Next.js, Vue.js, PostgreSQL, MQTT, WebSockets, Docker, Clean Architecture, AWS"
+    />
     <meta name="theme-color" content="#09090b" />
+    <link rel="canonical" href={canonicalUrl} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content="Rois Faozi Portfolio" />
@@ -35,6 +43,12 @@ const {
     </script>
   </head>
   <body class="bg-neutral-primary text-zinc-300 min-h-[100dvh] flex flex-col">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:rounded-full focus:bg-zinc-100 focus:text-zinc-950 focus:font-semibold"
+    >
+      Skip to main content
+    </a>
     <slot />
   </body>
 </html>

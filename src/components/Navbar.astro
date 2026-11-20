@@ -1,4 +1,6 @@
 ---
+import { Icon } from 'astro-icon/components'
+
 const links = [
   ['Home', '#home'],
   ['About', '#about'],
@@ -6,8 +8,8 @@ const links = [
   ['Contact', '#contact'],
 ]
 ---
-<header class="fixed top-0 left-0 w-full pt-6 md:pt-10 z-50 pointer-events-none">
-  <div class="container mx-auto px-6 md:px-12 2xl:px-24 pointer-events-auto">
+<header class="fixed top-0 left-0 w-full py-4 md:py-5 z-50 pointer-events-none">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 pointer-events-auto">
     <div class="relative flex items-center justify-between">
       <div>
         <a href="/" aria-label="home" class="block text-zinc-100 hover:text-zinc-300 transition-colors">
@@ -17,16 +19,81 @@ const links = [
           </svg>
         </a>
       </div>
-      <nav class="nav-menu hidden 2md:block">
-        <ul class="flex gap-8 items-center bg-zinc-900/50 backdrop-blur-md px-6 py-3 rounded-full border border-zinc-800/50">
+
+      <nav class="hidden 2md:block" aria-label="Primary navigation">
+        <ul class="flex gap-8 items-center bg-zinc-900/75 backdrop-blur-md px-6 py-2.5 rounded-full border border-zinc-800/70">
           {links.map(([label, href]) => (
-            <li class="group h-full">
-              <a href={href} class="text-sm font-medium text-zinc-400 group-hover:text-zinc-50 transition-colors tracking-wide">{label}</a>
+            <li>
+              <a href={href} class="text-sm font-medium text-zinc-400 hover:text-zinc-50 transition-colors whitespace-nowrap">
+                {label}
+              </a>
             </li>
           ))}
         </ul>
       </nav>
-      <!-- Mobile placeholder if needed, minimal styling -->
+
+      <button
+        type="button"
+        id="mobile-menu-toggle"
+        class="2md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full bg-zinc-900/80 backdrop-blur-md border border-zinc-800 text-zinc-200 hover:text-zinc-50 hover:border-zinc-700 transition-colors active:scale-[0.98]"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+      >
+        <Icon name="ph:list" class="w-5 h-5" id="menu-icon-open" />
+        <Icon name="ph:x" class="w-5 h-5 hidden" id="menu-icon-close" />
+      </button>
     </div>
+
+    <nav
+      id="mobile-nav"
+      aria-label="Mobile navigation"
+      class="hidden 2md:hidden mt-3 rounded-2xl bg-zinc-950/95 backdrop-blur-md border border-zinc-800 p-4"
+    >
+      <ul class="flex flex-col gap-1">
+        {links.map(([label, href]) => (
+          <li>
+            <a
+              href={href}
+              class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-medium text-zinc-300 hover:text-zinc-50 hover:bg-zinc-900 transition-colors"
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
   </div>
 </header>
+
+<script>
+  const toggleBtn = document.getElementById('mobile-menu-toggle')
+  const mobileNav = document.getElementById('mobile-nav')
+  const iconOpen = document.getElementById('menu-icon-open')
+  const iconClose = document.getElementById('menu-icon-close')
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link')
+
+  function setMenuOpen(open: boolean) {
+    if (!toggleBtn || !mobileNav || !iconOpen || !iconClose) return
+    mobileNav.classList.toggle('hidden', !open)
+    toggleBtn.setAttribute('aria-expanded', open ? 'true' : 'false')
+    iconOpen.classList.toggle('hidden', open)
+    iconClose.classList.toggle('hidden', !open)
+  }
+
+  toggleBtn?.addEventListener('click', () => {
+    const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true'
+    setMenuOpen(!isExpanded)
+  })
+
+  mobileLinks.forEach((link) => {
+    link.addEventListener('click', () => setMenuOpen(false))
+  })
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && toggleBtn?.getAttribute('aria-expanded') === 'true') {
+      setMenuOpen(false)
+      toggleBtn.focus()
+    }
+  })
+</script>
