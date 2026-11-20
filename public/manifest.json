@@ -1,9 +1,9 @@
 {
-  "name": "Rois Faozi — Frontend Developer & UI Engineer",
+  "name": "Rois Faozi | Full-Stack Developer",
   "short_name": "Rois Faozi",
-  "description": "Modern static portfolio website for Rois Faozi.",
-  "theme_color": "#020617",
-  "background_color": "#020617",
+  "description": "Portfolio of Rois Faozi, Full-Stack Developer specializing in Go backends, TypeScript web applications, and real-time enterprise systems.",
+  "theme_color": "#09090b",
+  "background_color": "#09090b",
   "display": "standalone",
   "orientation": "portrait",
   "scope": "/",
