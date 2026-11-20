@@ -90,7 +90,7 @@ const projects = (await getCollection('projects'))
           <div class="w-full aspect-[16/10] rounded-xl border border-zinc-800/80 overflow-hidden bg-zinc-950">
             <img
               src={project.data.image}
-              alt={project.data.title}
+              alt={`${project.data.title} - ${project.data.client ?? 'Engineering Case Study'}`}
               width="1280"
               height="800"
               class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"

@@ -6,7 +6,7 @@ description: "High-availability patient queue orchestration and visit-journey ba
 highlights:
   - "Replaced legacy numbering with prefix-based global sequencing to eliminate ticket collisions across departments."
   - "Synchronized real-time patient journeys and waiting-room display signage at 99.9% production availability."
-image: "/projects/medistra-qms.png"
+image: "/projects/medistra-qms.webp"
 technologies: ["Go", "MySQL", "Redis", "WebSockets", "Docker"]
 visibility: "enterprise"
 links: {}

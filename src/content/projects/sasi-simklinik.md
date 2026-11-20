@@ -6,7 +6,7 @@ description: "Indonesian clinic management and Electronic Medical Record (RME) p
 highlights:
   - "Engineered dual-binary Go architecture (clinic-core-api and qms-queue-engine) sharing PostgreSQL across 6 isolated schemas (qms, ref, clinical, patient, finance, core)."
   - "Implemented distributed WebSocket and SSE streams synchronizing registration, triage, consultation, and pharmacy stages."
-image: "/projects/sasi-simklinik.png"
+image: "/projects/sasi-simklinik.webp"
 technologies: ["Go", "PostgreSQL", "Multi-Schema", "Casbin RBAC", "WebSockets", "SSE", "Docker", "Tailwind CSS"]
 visibility: "enterprise"
 links: {}
