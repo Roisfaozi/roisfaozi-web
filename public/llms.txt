@@ -1,0 +1,23 @@
+# Rois Faozi - Full-Stack Developer (Go & TypeScript)
+
+> Backend-focused Full-Stack Developer based in Tangerang, Indonesia, building high-throughput Go (Chi, pgx) systems, TypeScript (React, Next.js, Vue 3, Astro) web applications, PostgreSQL multi-schema and query tuning pipelines (90% SQL latency reduction), MQTT/WebSockets IoT telemetry (40k+ devices), and hospital QMS/EMR platforms at 99.9% availability.
+
+## Core Sections
+- [About & Technical Stack](https://roisfaozi.com/#about): Career overview, production impact metrics, AI-assisted engineering workflow (Cursor AI), and 5-category technology stack.
+- [Experience Timeline](https://roisfaozi.com/#experience): Complete 8-role career history across Indonesian enterprise banking/healthcare, Carbon Manufacturing ERP open source, and international remote teams in India, the UK, Norway, Morocco, and France.
+- [Selected Work & Case Studies](https://roisfaozi.com/#project): Production architecture breakdowns across banking DMS, Medistra Hospital QMS, SASI SIMKlinik RME, Carbon ERP, and Golang Clean Architecture.
+- [Frequently Asked Questions](https://roisfaozi.com/#faq): Direct answers on stack specialization, regulated sector security, SQL optimization, open-source PRs, and remote availability.
+- [Contact](https://roisfaozi.com/#contact): Direct inquiry channel for remote full-stack engineering roles and technical consulting.
+
+## Featured Engineering Systems
+- **Enterprise Banking DMS & Digital Onboarding**: Air-gapped Go (Chi, pgx, raw SQL) Device Management System managing 40k+ corporate IoT terminals over MQTT and WebSockets with menu-level Casbin RBAC, OWASP zero critical pen-test findings, and 90% SQL latency reduction (9s to 900ms).
+- **Hospital Queue Management System (QMS)**: Prefix-based global sequencing queue orchestration and real-time signage for Medistra Hospital and BitHealth (BIH) with 99.9% production availability.
+- **SASI SIMKlinik (Clinic & EMR Platform)**: Dual-binary Go platform (`clinic-core-api` and `qms-queue-engine`) sharing PostgreSQL across 6 isolated schemas, compliant with Permenkes 24/2022, SATUSEHAT, and BPJS bridging.
+- **Carbon Manufacturing ERP (crbnos/carbon)**: Merged upstream PR #866 (async group member search & prefetch caching), PR #1002 (AI-powered PDF extraction pipeline with Inngest across 20+ form endpoints), and PR #682 (company-isolated private buckets with signed URLs).
+- **Golang Clean Architecture & API Blueprint**: Reference Go DDD starter with dependency injection, automated migrations, and 85%+ SQLMock unit test coverage.
+
+## Extended Context & Profiles
+- [Complete Career & Technical Dossier (llms-full.txt)](https://roisfaozi.com/llms-full.txt): Unabridged Markdown profile containing all 8 roles, full achievement bullets, education, AWS Cloud Developing (ACD2) certification, and Q&A.
+- [GitHub](https://github.com/Roisfaozi): Open-source repositories and upstream contributions.
+- [LinkedIn](https://linkedin.com/in/roisfaozi): Verified professional network profile.
+- Email: roisfaozi8@gmail.com

@@ -1,0 +1,92 @@
+# Rois Faozi - Full-Stack Developer (Go & TypeScript)
+
+> Location: Tangerang, Indonesia (Remote-Ready)
+> Website: https://roisfaozi.com/
+> Email: roisfaozi8@gmail.com
+> GitHub: https://github.com/Roisfaozi
+> LinkedIn: https://linkedin.com/in/roisfaozi
+> Availability: Open to international remote full-stack or Go backend engineering roles and technical consulting.
+
+## Verified Production Impact
+- **90% SQL Latency Reduction**: Cut complex PostgreSQL query execution time from 9s down to 900ms using index tuning, query profiling, and k6 load testing.
+- **40k+ IoT Devices in Production**: Engineered MQTT (Eclipse Paho) and WebSockets (Gorilla) hardware telemetry and remote command dispatch in air-gapped banking environments.
+- **99.9% Hospital QMS Availability**: Built collision-free patient queue sequencing and waiting-room signage services across multi-department clinic workflows.
+- **0 Critical Banking Pen-Test Findings**: Implemented menu-level Casbin RBAC and OWASP security compliance across state-owned and Islamic commercial banking workflows.
+
+## Technical Stack
+- **Languages**: Go (Golang), TypeScript, JavaScript (ES6+), SQL, Python, HTML5 / CSS3
+- **Backend & Architecture**: Clean Architecture, Hexagonal Architecture, Event-Driven Architecture, Modular Monolith, Microservices, Chi, Gin, Fiber, Node.js, Express, NestJS, Inngest, GraphQL
+- **Frontend & Web**: React, Next.js, Vue 3 (Vite), Astro, Tailwind CSS, Zustand, Redux, Shadcn UI, React Hook Form, Zod
+- **Databases & Caching**: PostgreSQL (pgx, Raw SQL), Multi-Schema Isolation, MySQL, MongoDB, Redis (Pub/Sub, Caching), Prisma ORM, Query Indexing & Tuning
+- **Cloud, DevOps & Protocols**: AWS (S3, EC2), Docker, Nginx, MQTT (Eclipse Paho), WebSockets (Gorilla), SSE, Casbin RBAC, OAuth 2.0 / JWT, Prometheus, MinIO, GitHub Actions, GitLab CI, Jest / SQLMock, k6 Load Testing, Vercel, Linux
+
+## Professional Experience (8 Roles, 2023 - Present)
+
+### 1. Full-Stack Developer | PT. Sentuh Digital Teknologi (Jul 2025 - Present | BSD, Tangerang, Indonesia)
+- Architected an enterprise Device Management System (DMS) in Go (Chi router, raw SQL, pgx) for one of Indonesia's largest state-owned commercial banks, managing 40k+ corporate IoT devices across on-premise air-gapped environments.
+- Engineered hybrid real-time communication infrastructure using MQTT (Eclipse Paho) and WebSockets (Gorilla) for hardware telemetry, centralized logging, and remote command dispatch with sub-second latency, cutting incident detection time by 60%.
+- Implemented fine-grained menu-level Role-Based Access Control (RBAC) via Casbin with OWASP security compliance, achieving zero critical vulnerabilities in banking penetration tests.
+- Modernized the healthcare Queue Management System (QMS) backend in Go and MySQL for Medistra Hospital and BitHealth (BIH), eliminating ticket collisions via a prefix-based global sequencing algorithm and multi-tenant branch architecture.
+- Developed patient journey tracking and real-time waiting-room display signage services, synchronizing queue states across multi-department clinic workflows with 99.9% system availability.
+- Configured system observability with Prometheus metrics and structured logging, optimizing SQL queries and indexes under k6 load tests to slash latency by 90% (from 9s down to 900ms) and fix middleware race conditions.
+- Standardized Go backend scaffolding, Docker and Nginx CI/CD pipelines, and modular React, Vue.js, and Next.js component libraries while mentoring junior engineers in design and code reviews, cutting setup time from 5 days to 3 hours and raising deployment efficiency by 60%.
+
+### 2. Open Source Contributor | Carbon Manufacturing ERP - crbnos/carbon (May 2026 - Present | Global Open Source)
+- Repository: https://github.com/crbnos/carbon
+- Authored and merged PR #866 into upstream core, implementing async group member fetching, server-side search, and prefetch-on-hover caching across 12 files (+367/-72 lines).
+- Co-authored merged PR #1002 (initiated in PR #879), engineering an AI-powered PDF extraction and auto-fill pipeline for Sales RFQs and Purchase Invoices with Inngest background event triggers across 20+ form endpoints.
+- Proposed and refactored company-specific private storage architecture (PR #682), migrating multi-tenant file handling across ERP and MES modules to isolated company buckets with authenticated signed URLs.
+- Enforced strict TypeScript type safety, peer code reviews, automated CI/CD checks, and unit test coverage across core ERP and supply-chain modules.
+
+### 3. Full-Stack Developer (Contract) | MainFantasy - Crypto Trading Platform (Mar 2025 - Jun 2025 | Bharatpur, India, Remote)
+- Collaborated directly with the CTO to architect a live crypto fantasy trading platform, building a high-throughput point-based scoring engine processing real-time market data feeds.
+- Engineered real-time leaderboard, dashboard, and trading history synchronization using GraphQL subscriptions, delivering zero-latency updates without page refreshes for 5K+ users.
+- Automated competition onboarding workflows so new users dynamically rank on the leaderboard immediately upon executing their first trade.
+- Constructed 30+ accessible, responsive UI components and trading modals with Next.js and Tailwind CSS, achieving 95+ Lighthouse performance scores on mobile viewports.
+- Configured Meta (Facebook) conversion tracking events through Next.js API routes to measure marketing campaign performance.
+
+### 4. Front-End Developer (Contract) | Crypto Trading Token - DeFi Platform (Mar 2025 - May 2025 | London, UK, Remote)
+- Built high-performance DeFi trading dashboards in Next.js and TypeScript featuring interactive candlestick charting and resizable viewports across 50+ token trading pairs.
+- Engineered global application state with Zustand, managing live crypto wallet synchronization, MEV protection toggles, and streaming order book transactions.
+- Built reusable component libraries (wallet trackers, strategy forms, transaction cards) integrated with React Hook Form and Zod for strict client-side copy-trading validation.
+- Optimized client rendering speeds with window virtualization, memoization, and debouncing, maintaining steady 60fps interaction and eliminating frame drops during high-volume transaction spikes.
+
+### 5. Full-Stack Developer (Contract) | Bioking - Microsite & Analytics Platform (Dec 2024 - Feb 2025 | Oslo, Norway, Remote)
+- Engineered a full-stack microsite and link management SaaS platform with JWT-based authentication, custom branded bio-pages, and automated shortlink redirection.
+- Built a real-time click analytics and geolocation aggregation engine using Prisma ORM and PostgreSQL, rendering visitor demographics, locations, and CTR trends across 10K+ monthly links.
+- Designed optimized PostgreSQL schemas, indexing strategies, and Node.js, NestJS, and Express RESTful APIs to deliver sub-100ms response times on high-traffic public redirect routes and analytics dashboards.
+
+### 6. Full-Stack Developer (Contract) | Guillaumemercyvenal - Decentralized Management Platform (Nov 2023 - Feb 2024 | Morocco, Remote)
+- Developed a decentralized web application featuring real-time split-pane collaborative interfaces using Svelte and GUN.js for peer-to-peer data synchronization.
+- Implemented persistent authentication and local-first profile management systems ensuring reliable user sessions and profile asset persistence across page reloads.
+- Designed and enforced Role-Based Access Control (RBAC), empowering group administrators to manage granular member permissions across decentralized workspaces.
+- Enhanced the expense tracking module with descriptive metadata fields and chronological logging, deployed through streamlined Vite and Vercel pipelines.
+
+### 7. Full-Stack Developer (Contract) | Wazzapp AI (Wazzapp.me) - Chatbot Platform (Feb 2023 - Mar 2023 | Rennes, France, Remote)
+- Architected a multi-tenant AI chatbot SaaS in Next.js integrating OpenAI GPT APIs with Twilio Programmable Messaging, handling 15K+ monthly automated WhatsApp conversations.
+- Integrated Stripe subscription billing (tiers, renewals, invoicing, and webhook reconciliation) alongside Google OAuth 2.0 authentication for 500+ registered active users.
+- Engineered an administrative dashboard for real-time user management, chatbot configuration tuning, subscription monitoring, and system performance tracking.
+
+### 8. Front-End Developer (Contract) | Vegetable Recipe App (Feb 2023 - Mar 2023 | Bangalore, India, Remote)
+- Developed a dynamic recipe discovery platform integrating external REST APIs to display nutritional profiles, ingredients, and step-by-step cooking instructions.
+- Built real-time filtering, multi-category search, and client-side routing for responsive browsing across desktop and mobile viewports.
+- Integrated Firebase Authentication and Firestore for secure onboarding, persistent saved favorites across sessions, and resilient API error handling.
+
+## Key Engineering Projects
+1. **Enterprise Banking DMS & Digital Onboarding** (State-Owned Bank & Bank Muamalat, 2025 - Present): Air-gapped Go DMS & compliant digital onboarding over MQTT/WebSockets with Casbin RBAC and 90% PostgreSQL latency cut.
+2. **Hospital Queue Management System (QMS)** (Medistra Hospital & BitHealth, 2025 - Present): Prefix-based global sequencing and real-time multi-department waiting-room signage at 99.9% uptime.
+3. **SASI SIMKlinik (Clinic & EMR Platform)** (Creator & Lead Architect, 2025 - Present): Dual-binary Go platform sharing 6 isolated PostgreSQL schemas (`qms`, `ref`, `clinical`, `patient`, `finance`, `core`) built for Permenkes 24/2022, SATUSEHAT, and BPJS bridging.
+4. **Carbon Manufacturing ERP (crbnos/carbon)** (May 2026 - Present): Upstream open-source PRs #866, #1002, and #682.
+5. **Golang Clean Architecture & API Blueprint** (2024 - 2025): Reference Go Clean Architecture & DDD starter with 85%+ SQLMock unit test coverage.
+
+## Education & Certifications
+- **Bachelor of Computer Science (S.Kom)**: Cyber University of Muhammadiyah, Indonesia (Expected 2028)
+- **AWS Cloud Developing (ACD2) Certification**: Digitalent PROA x AWS Academy, 120 Hours (2024)
+- **Full-Stack Web Golang Intensive Program**: Fazztrack, Indonesia (2024)
+
+## Frequently Asked Questions
+- **What technologies and architectures does Rois Faozi specialize in?** Go (Chi, Gin, Fiber, pgx), TypeScript, React, Next.js, Vue 3, Node.js and NestJS, PostgreSQL query tuning and multi-schema isolation, Redis pub/sub, MQTT (Eclipse Paho), WebSockets, Docker, Nginx, Casbin RBAC, Clean Architecture, and AWS Cloud Developing.
+- **What enterprise banking and healthcare systems has Rois Faozi built?** Enterprise air-gapped IoT Device Management System (DMS) managing 40k+ devices and digital account onboarding workflows for Indonesian banking (state-owned commercial bank and Bank Muamalat), high-availability hospital Queue Management Systems (QMS) for Medistra Hospital and BitHealth at 99.9% uptime, and SASI SIMKlinik (dual-binary Go architecture with 6 isolated PostgreSQL schemas compliant with Permenkes 24/2022, SATUSEHAT, and BPJS bridging).
+- **How does Rois Faozi handle PostgreSQL performance optimization and enterprise security?** Profiles SQL bottlenecks under k6 load tests with Prometheus metrics and structured logging, achieving a 90% query latency reduction (from 9s down to 900ms), while enforcing menu-level Casbin RBAC, OWASP compliance, and isolated tenant storage that passed banking penetration testing with zero critical vulnerabilities.
+- **What open-source contributions has Rois Faozi authored?** Active contributor to Carbon Manufacturing ERP (crbnos/carbon, 2k+ GitHub stars): merged PR #866, co-authored merged PR #1002, and proposed PR #682, plus an open-source Go Clean Architecture and DDD starter with 85%+ SQLMock unit test coverage.
+- **Is Rois Faozi available for international remote full-stack or backend roles?** Yes. Based in Tangerang, Indonesia, Rois Faozi is open to remote full-stack engineering roles, Go backend architecture consulting, and technical collaborations across time zones.
