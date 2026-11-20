@@ -1,14 +1,47 @@
 ---
+import { Icon } from 'astro-icon/components'
+import { profile } from '../data/profile'
 ---
-<section class="container mx-auto px-6 md:px-12 2xl:px-24 py-24 border-t border-zinc-800/50 mt-12" id="contact">
+<section class="max-w-7xl mx-auto px-6 md:px-12 py-24 border-t border-zinc-800/60" id="contact">
   <div class="flex flex-col items-center justify-center text-center max-w-2xl mx-auto space-y-8 reveal-contact">
     <h2 class="text-4xl md:text-6xl font-bold tracking-tighter text-zinc-50">Let's work together.</h2>
-    <p class="text-lg text-zinc-400 leading-relaxed">
-      Although I'm not currently looking for any new opportunities, my inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+    <p class="text-base md:text-lg text-zinc-400 leading-relaxed">
+      Open to remote full-stack engineering roles, backend architecture consulting, and technical collaborations. Send an email or connect on GitHub and LinkedIn.
     </p>
-    <a href="mailto:roisfaozi8@gmail.com" class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-zinc-100 text-zinc-950 font-bold hover:bg-white transition-transform active:scale-95 text-lg">
+    <a
+      href={`mailto:${profile.email}`}
+      class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-zinc-100 text-zinc-950 font-semibold hover:bg-zinc-200 transition-transform active:scale-[0.98] text-base md:text-lg whitespace-nowrap"
+    >
       Say Hello
     </a>
+
+    <div class="flex flex-wrap items-center justify-center gap-6 pt-2 text-sm text-zinc-400">
+      <a
+        href={profile.github}
+        target="_blank"
+        rel="noreferrer"
+        class="inline-flex items-center gap-2 hover:text-zinc-50 transition-colors"
+      >
+        <Icon name="ph:github-logo" class="w-4 h-4" />
+        GitHub
+      </a>
+      <a
+        href={profile.linkedin}
+        target="_blank"
+        rel="noreferrer"
+        class="inline-flex items-center gap-2 hover:text-zinc-50 transition-colors"
+      >
+        <Icon name="ph:linkedin-logo" class="w-4 h-4" />
+        LinkedIn
+      </a>
+      <a
+        href={`mailto:${profile.email}`}
+        class="inline-flex items-center gap-2 hover:text-zinc-50 transition-colors"
+      >
+        <Icon name="ph:envelope-simple" class="w-4 h-4" />
+        {profile.email}
+      </a>
+    </div>
   </div>
 </section>
 
@@ -18,16 +51,19 @@
 
   gsap.registerPlugin(ScrollTrigger)
 
-  const ctx = gsap.context(() => {
-    gsap.fromTo('.reveal-contact > *',
-      { y: 30, opacity: 0 },
-      { 
-        y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.reveal-contact',
-          start: 'top 85%',
-        }
-      }
-    )
+  const mm = gsap.matchMedia()
+  mm.add('(prefers-reduced-motion: no-preference)', () => {
+    gsap.from('.reveal-contact > *', {
+      y: 24,
+      opacity: 0,
+      duration: 0.7,
+      stagger: 0.08,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.reveal-contact',
+        start: 'top 85%',
+        once: true,
+      },
+    })
   })
 </script>
