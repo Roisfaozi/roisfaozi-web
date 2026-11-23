@@ -4,7 +4,7 @@ import { impactStats, profile, skillGroups } from '../data/profile'
 ---
 <section class="max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-24" id="about">
   <div class="grid grid-cols-1 md:grid-cols-6 gap-6 reveal-about">
-    <div class="md:col-span-4 bg-zinc-900/60 border border-zinc-800/70 rounded-2xl p-8 md:p-10 flex flex-col justify-between gap-8">
+    <div data-reveal class="md:col-span-4 bg-zinc-900/60 border border-zinc-800/70 rounded-2xl p-8 md:p-10 flex flex-col justify-between gap-8">
       <div>
         <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-50 mb-5">About</h2>
         <div class="space-y-4 text-base md:text-lg text-zinc-400 leading-relaxed max-w-[65ch]">
@@ -27,7 +27,7 @@ import { impactStats, profile, skillGroups } from '../data/profile'
       </div>
     </div>
 
-    <div class="md:col-span-2 bg-gradient-to-b from-emerald-950/35 to-zinc-900/70 border border-emerald-500/20 rounded-2xl p-8 flex flex-col justify-between">
+    <div data-reveal class="md:col-span-2 bg-gradient-to-b from-emerald-950/35 to-zinc-900/70 border border-emerald-500/20 rounded-2xl p-8 flex flex-col justify-between">
       <div>
         <div class="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mb-6">
           <Icon name="ph:sparkle" class="w-5 h-5" />
@@ -39,7 +39,7 @@ import { impactStats, profile, skillGroups } from '../data/profile'
       </div>
     </div>
 
-    <div class="md:col-span-3 bg-zinc-950 border border-zinc-800/80 rounded-2xl p-8 flex flex-col justify-between">
+    <div data-reveal class="md:col-span-3 bg-zinc-950 border border-zinc-800/80 rounded-2xl p-8 flex flex-col justify-between">
       <div>
         <div class="w-11 h-11 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-200 flex items-center justify-center mb-6">
           <Icon name="ph:cpu" class="w-5 h-5" />
@@ -51,7 +51,7 @@ import { impactStats, profile, skillGroups } from '../data/profile'
       </div>
     </div>
 
-    <div class="md:col-span-3 bg-zinc-900/40 border border-zinc-800/70 rounded-2xl p-8 flex flex-col justify-between">
+    <div data-reveal class="md:col-span-3 bg-zinc-900/40 border border-zinc-800/70 rounded-2xl p-8 flex flex-col justify-between">
       <div>
         <div class="w-11 h-11 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-200 flex items-center justify-center mb-6">
           <Icon name="ph:git-pull-request" class="w-5 h-5" />
@@ -63,7 +63,7 @@ import { impactStats, profile, skillGroups } from '../data/profile'
       </div>
     </div>
 
-    <div class="md:col-span-6 bg-zinc-900/50 border border-zinc-800/70 rounded-2xl p-8">
+    <div data-reveal class="md:col-span-6 bg-zinc-900/50 border border-zinc-800/70 rounded-2xl p-8">
       <h3 class="text-xl font-semibold text-zinc-100 mb-6">Technical Stack</h3>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
         {skillGroups.map((group) => (
@@ -82,26 +82,3 @@ import { impactStats, profile, skillGroups } from '../data/profile'
     </div>
   </div>
 </section>
-
-<script>
-  import { gsap } from 'gsap'
-  import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-  gsap.registerPlugin(ScrollTrigger)
-
-  const mm = gsap.matchMedia()
-  mm.add('(prefers-reduced-motion: no-preference)', () => {
-    gsap.from('.reveal-about > div', {
-      y: 28,
-      opacity: 0,
-      duration: 0.7,
-      stagger: 0.08,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '.reveal-about',
-        start: 'top 82%',
-        once: true,
-      },
-    })
-  })
-</script>

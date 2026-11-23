@@ -132,6 +132,8 @@ const structuredData = {
       rel="preload"
       as="image"
       href="/images/hero-system.webp"
+      imagesrcset="/images/hero-system-480.webp 480w, /images/hero-system-720.webp 720w, /images/hero-system.webp 960w"
+      imagesizes="(max-width: 1023px) calc(100vw - 3rem), 40vw"
       type="image/webp"
       fetchpriority="high"
     />
@@ -167,12 +169,28 @@ const structuredData = {
     <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-icon-180x180.png" />
     <title>{title}</title>
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5YEYZQRFZY"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-5YEYZQRFZY');
+      (function () {
+        var loaded = false;
+        function loadGtag() {
+          if (loaded) return;
+          loaded = true;
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-5YEYZQRFZY';
+          document.head.appendChild(s);
+        }
+        ['pointerdown', 'keydown', 'scroll'].forEach(function (evt) {
+          window.addEventListener(evt, loadGtag, { once: true, passive: true });
+        });
+        window.addEventListener('load', function () {
+          setTimeout(loadGtag, 2500);
+        });
+      })();
     </script>
   </head>
   <body class="bg-neutral-primary text-zinc-300 min-h-[100dvh] flex flex-col">
@@ -183,5 +201,25 @@ const structuredData = {
       Skip to main content
     </a>
     <slot />
+    <script is:inline>
+      if ('IntersectionObserver' in window && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            var el = entry.target;
+            if (entry.isIntersecting) {
+              if (el.classList.contains('js-reveal')) {
+                el.classList.add('is-visible');
+              }
+              obs.unobserve(el);
+            } else if (entry.rootBounds && entry.boundingClientRect.top > entry.rootBounds.bottom) {
+              el.classList.add('js-reveal');
+            }
+          });
+        }, { rootMargin: '0px 0px -40px 0px', threshold: 0.05 });
+        document.querySelectorAll('[data-reveal]').forEach(function (el) {
+          obs.observe(el);
+        });
+      }
+    </script>
   </body>
 </html>

@@ -30,6 +30,7 @@ import { profile } from '../data/profile'
           </a>
           <a
             href="#contact"
+            aria-label="Say Hello - go to contact section"
             class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-zinc-900/70 border border-zinc-700 text-zinc-100 font-medium hover:bg-zinc-800 transition-colors active:scale-[0.98] whitespace-nowrap"
           >
             Say Hello
@@ -41,10 +42,13 @@ import { profile } from '../data/profile'
         <div class="rounded-2xl border border-zinc-800/80 bg-zinc-950 overflow-hidden aspect-[4/3] lg:aspect-[4/5]">
           <img
             src="/images/hero-system.webp"
+            srcset="/images/hero-system-480.webp 480w, /images/hero-system-720.webp 720w, /images/hero-system.webp 960w"
+            sizes="(max-width: 1023px) calc(100vw - 3rem), 40vw"
             alt="Minimalist dark architectural monolith representing Go backend and enterprise systems engineering by Rois Faozi"
             width="960"
             height="1200"
             loading="eager"
+            decoding="sync"
             fetchpriority="high"
             class="w-full h-full object-cover"
           />
@@ -53,27 +57,3 @@ import { profile } from '../data/profile'
     </div>
   </div>
 </section>
-
-<script>
-  import { gsap } from 'gsap'
-
-  const mm = gsap.matchMedia()
-  mm.add('(prefers-reduced-motion: no-preference)', () => {
-    gsap.from('.hero-content > *', {
-      y: 24,
-      opacity: 0,
-      duration: 0.75,
-      stagger: 0.08,
-      ease: 'power3.out',
-      delay: 0.1,
-    })
-
-    gsap.from('.hero-visual', {
-      y: 24,
-      opacity: 0,
-      duration: 0.85,
-      ease: 'power3.out',
-      delay: 0.2,
-    })
-  })
-</script>

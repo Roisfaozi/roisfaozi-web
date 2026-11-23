@@ -15,113 +15,97 @@ const projects = (await getCollection('projects'))
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 project-grid">
-    {projects.map((project, idx) => (
-      <article
-        class={`group relative flex flex-col justify-between rounded-2xl bg-zinc-900/35 border border-zinc-800/70 overflow-hidden hover:bg-zinc-900/55 hover:border-zinc-700/70 transition-colors ${
-          idx === 0 ? 'lg:col-span-2 lg:flex-row' : ''
-        }`}
-      >
-        <div class={`p-8 md:p-10 flex flex-col justify-between gap-6 ${idx === 0 ? 'lg:w-1/2' : ''}`}>
-          <div class="space-y-4">
-            {(project.data.client || project.data.period) && (
-              <p class="text-xs font-mono text-zinc-400">
-                {[project.data.client, project.data.period].filter(Boolean).join(' · ')}
-              </p>
-            )}
+    {projects.map((project, idx) => {
+      const smallImage = project.data.image.replace('.webp', '-640.webp')
+      return (
+        <article
+          data-reveal
+          class={`group relative flex flex-col justify-between rounded-2xl bg-zinc-900/35 border border-zinc-800/70 overflow-hidden hover:bg-zinc-900/55 hover:border-zinc-700/70 transition-colors ${
+            idx === 0 ? 'lg:col-span-2 lg:flex-row' : ''
+          }`}
+        >
+          <div class={`p-8 md:p-10 flex flex-col justify-between gap-6 ${idx === 0 ? 'lg:w-1/2' : ''}`}>
+            <div class="space-y-4">
+              {(project.data.client || project.data.period) && (
+                <p class="text-xs font-mono text-zinc-400">
+                  {[project.data.client, project.data.period].filter(Boolean).join(' · ')}
+                </p>
+              )}
 
-            <h3 class="text-2xl font-bold text-zinc-50 tracking-tight">{project.data.title}</h3>
-            <p class="text-sm md:text-base text-zinc-400 leading-relaxed">{project.data.description}</p>
+              <h3 class="text-2xl font-bold text-zinc-50 tracking-tight">{project.data.title}</h3>
+              <p class="text-sm md:text-base text-zinc-400 leading-relaxed">{project.data.description}</p>
 
-            {project.data.highlights.length > 0 && (
-              <ul class="space-y-2 text-sm text-zinc-400 leading-relaxed list-disc pl-4 marker:text-emerald-500/70">
-                {project.data.highlights.map((bullet) => (
-                  <li>{bullet}</li>
-                ))}
-              </ul>
-            )}
-          </div>
-
-          <div class="space-y-5 pt-2">
-            <div class="flex flex-wrap gap-1.5">
-              {project.data.technologies.map((tech) => (
-                <span class="px-2.5 py-1 rounded-full bg-zinc-800/90 text-zinc-200 border border-zinc-700/60 text-xs font-mono">
-                  {tech}
-                </span>
-              ))}
-            </div>
-
-            <div class="flex flex-wrap items-center gap-4 pt-1">
-              {project.data.links.github || project.data.links.live ? (
-                <>
-                  {project.data.links.github && (
-                    <a
-                      href={project.data.links.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      class="inline-flex items-center gap-2 text-sm font-medium text-zinc-300 hover:text-zinc-50 transition-colors"
-                    >
-                      <Icon name="ph:github-logo" class="w-4 h-4" />
-                      {project.data.links.label ?? 'GitHub'}
-                    </a>
-                  )}
-                  {project.data.links.live && (
-                    <a
-                      href={project.data.links.live}
-                      target="_blank"
-                      rel="noreferrer"
-                      class="inline-flex items-center gap-2 text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
-                    >
-                      <Icon name="ph:arrow-up-right" class="w-4 h-4" />
-                      Live Preview
-                    </a>
-                  )}
-                </>
-              ) : (
-                <span class="inline-flex items-center gap-2 text-xs font-mono text-zinc-400">
-                  <Icon name="ph:lock-simple" class="w-4 h-4 text-emerald-400" />
-                  Private Enterprise System
-                </span>
+              {project.data.highlights.length > 0 && (
+                <ul class="space-y-2 text-sm text-zinc-400 leading-relaxed list-disc pl-4 marker:text-emerald-500/70">
+                  {project.data.highlights.map((bullet) => (
+                    <li>{bullet}</li>
+                  ))}
+                </ul>
               )}
             </div>
-          </div>
-        </div>
 
-        <div class={`bg-zinc-950 p-4 md:p-6 flex items-center justify-center ${idx === 0 ? 'lg:w-1/2' : ''}`}>
-          <div class="w-full aspect-[16/10] rounded-xl border border-zinc-800/80 overflow-hidden bg-zinc-950">
-            <img
-              src={project.data.image}
-              alt={`${project.data.title} - ${project.data.client ?? 'Engineering Case Study'}`}
-              width="1280"
-              height="800"
-              class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
-              loading="lazy"
-            />
+            <div class="space-y-5 pt-2">
+              <div class="flex flex-wrap gap-1.5">
+                {project.data.technologies.map((tech) => (
+                  <span class="px-2.5 py-1 rounded-full bg-zinc-800/90 text-zinc-200 border border-zinc-700/60 text-xs font-mono">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <div class="flex flex-wrap items-center gap-4 pt-1">
+                {project.data.links.github || project.data.links.live ? (
+                  <>
+                    {project.data.links.github && (
+                      <a
+                        href={project.data.links.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        class="inline-flex items-center gap-2 text-sm font-medium text-zinc-300 hover:text-zinc-50 transition-colors"
+                      >
+                        <Icon name="ph:github-logo" class="w-4 h-4" />
+                        {project.data.links.label ?? 'GitHub'}
+                      </a>
+                    )}
+                    {project.data.links.live && (
+                      <a
+                        href={project.data.links.live}
+                        target="_blank"
+                        rel="noreferrer"
+                        class="inline-flex items-center gap-2 text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
+                      >
+                        <Icon name="ph:arrow-up-right" class="w-4 h-4" />
+                        Live Preview
+                      </a>
+                    )}
+                  </>
+                ) : (
+                  <span class="inline-flex items-center gap-2 text-xs font-mono text-zinc-400">
+                    <Icon name="ph:lock-simple" class="w-4 h-4 text-emerald-400" />
+                    Private Enterprise System
+                  </span>
+                )}
+              </div>
+            </div>
           </div>
-        </div>
-      </article>
-    ))}
+
+          <div class={`bg-zinc-950 p-4 md:p-6 flex items-center justify-center ${idx === 0 ? 'lg:w-1/2' : ''}`}>
+            <div class="w-full aspect-[16/10] rounded-xl border border-zinc-800/80 overflow-hidden bg-zinc-950">
+              <img
+                src={project.data.image}
+                srcset={`${smallImage} 640w, ${project.data.image} 1280w`}
+                sizes="(max-width: 1023px) calc(100vw - 4rem), 45vw"
+                alt={`${project.data.title} - ${project.data.client ?? 'Engineering Case Study'}`}
+                width="1280"
+                height="800"
+                class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </article>
+      )
+    })}
   </div>
 </section>
-
-<script>
-  import { gsap } from 'gsap'
-  import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-  gsap.registerPlugin(ScrollTrigger)
-
-  const mm = gsap.matchMedia()
-  mm.add('(prefers-reduced-motion: no-preference)', () => {
-    gsap.from('.project-grid > article', {
-      y: 28,
-      opacity: 0,
-      duration: 0.75,
-      stagger: 0.1,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '.project-grid',
-        start: 'top 82%',
-        once: true,
-      },
-    })
-  })
-</script>

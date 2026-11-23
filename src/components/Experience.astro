@@ -56,8 +56,8 @@ const contractCount = experienceRoles.filter((role) => role.category === 'contra
               </div>
               <div>
                 <p class="text-sm font-medium text-zinc-100">{cred.title}</p>
-                <p class="text-xs text-zinc-400 mt-0.5">{cred.issuer}</p>
-                <p class="text-xs font-mono text-zinc-500 mt-1">{cred.period}</p>
+                <p class="text-xs text-zinc-300 mt-0.5">{cred.issuer}</p>
+                <p class="text-xs font-mono text-zinc-400 mt-1">{cred.period}</p>
               </div>
             </div>
           ))}
@@ -68,6 +68,7 @@ const contractCount = experienceRoles.filter((role) => role.category === 'contra
     <div class="lg:col-span-8 space-y-6 reveal-experience">
       {experienceRoles.map((item) => (
         <article
+          data-reveal
           data-exp-category={item.category}
           class={
             item.category === 'enterprise'
@@ -105,9 +106,9 @@ const contractCount = experienceRoles.filter((role) => role.category === 'contra
               )}
             </div>
 
-            <div class="text-xs font-mono text-zinc-400 sm:text-right shrink-0">
+            <div class="text-xs font-mono text-zinc-300 sm:text-right shrink-0">
               <p>{item.period}</p>
-              <p class="text-zinc-500 mt-0.5">{item.location}</p>
+              <p class="text-zinc-400 mt-0.5">{item.location}</p>
             </div>
           </div>
 
@@ -131,27 +132,6 @@ const contractCount = experienceRoles.filter((role) => role.category === 'contra
 </section>
 
 <script>
-  import { gsap } from 'gsap'
-  import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-  gsap.registerPlugin(ScrollTrigger)
-
-  const mm = gsap.matchMedia()
-  mm.add('(prefers-reduced-motion: no-preference)', () => {
-    gsap.from('.reveal-experience > article', {
-      y: 28,
-      opacity: 0,
-      duration: 0.7,
-      stagger: 0.08,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '.reveal-experience',
-        start: 'top 82%',
-        once: true,
-      },
-    })
-  })
-
   const filterButtons = document.querySelectorAll<HTMLButtonElement>('[data-exp-filter]')
   const roleCards = document.querySelectorAll<HTMLElement>('[data-exp-category]')
 
@@ -178,9 +158,10 @@ const contractCount = experienceRoles.filter((role) => role.category === 'contra
         const category = card.dataset.expCategory
         const shouldShow = selected === 'all' || category === selected
         card.classList.toggle('hidden', !shouldShow)
+        if (shouldShow) {
+          card.classList.add('is-visible')
+        }
       })
-
-      ScrollTrigger.refresh()
     })
   })
 </script>
