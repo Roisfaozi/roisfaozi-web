@@ -5,4 +5,7 @@ import icon from 'astro-icon'
 export default defineConfig({
   integrations: [tailwind(), icon()],
   site: 'https://roisfaozi.com',
+  build: {
+    inlineStylesheets: 'always',
+  },
 })
