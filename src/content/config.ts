@@ -37,6 +37,7 @@ const blog = defineCollection({
     category: z.string().default('Backend Engineering'),
     tags: z.array(z.string()).default([]),
     keywords: z.array(z.string()).default([]),
+    ogImage: z.string().optional(),
     metrics: z
       .array(
         z.object({

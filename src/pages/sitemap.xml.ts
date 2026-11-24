@@ -40,12 +40,24 @@ export const GET: APIRoute = async ({ site }) => {
         `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(enUrl)}" />`,
       ].join('\n')
 
+      const enOgLoc = enPost.data.ogImage
+        ? new URL(enPost.data.ogImage, `${siteUrl}/`).href
+        : `${siteUrl}/og/en/${slug}.png`
+      const idOgLoc = idPost?.data.ogImage
+        ? new URL(idPost.data.ogImage, `${siteUrl}/`).href
+        : `${siteUrl}/og/id/${slug}.png`
+      const idTitle = idPost ? idPost.data.title : enPost.data.title
+
       return `  <url>
     <loc>${escapeXml(enUrl)}</loc>
     <lastmod>${enLastMod}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
 ${alternatesBlock}
+    <image:image>
+      <image:loc>${escapeXml(enOgLoc)}</image:loc>
+      <image:title>${escapeXml(enPost.data.title)}</image:title>
+    </image:image>
   </url>
   <url>
     <loc>${escapeXml(idUrl)}</loc>
@@ -53,6 +65,10 @@ ${alternatesBlock}
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
 ${alternatesBlock}
+    <image:image>
+      <image:loc>${escapeXml(idOgLoc)}</image:loc>
+      <image:title>${escapeXml(idTitle)}</image:title>
+    </image:image>
   </url>`
     })
     .join('\n')

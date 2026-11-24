@@ -1,5 +1,7 @@
 ---
 import '../styles/globals.css'
+import geistSans400Url from '@fontsource/geist-sans/files/geist-sans-latin-400-normal.woff2?url'
+import geistSans700Url from '@fontsource/geist-sans/files/geist-sans-latin-700-normal.woff2?url'
 import { getCollection } from 'astro:content'
 import { credentials, faqItems, profile, seoMeta } from '../data/profile'
 
@@ -9,6 +11,8 @@ const {
   lang = 'en',
   keywords = seoMeta.keywords,
   ogType = 'profile',
+  ogImage = seoMeta.ogImage,
+  ogImageAlt = seoMeta.ogImageAlt,
   alternates = [],
   articleMeta,
   customStructuredData,
@@ -143,6 +147,8 @@ const activeStructuredData = customStructuredData || structuredData
       content={robotsContent}
     />
     <meta name="theme-color" content="#09090b" />
+    <link rel="preload" as="font" type="font/woff2" href={geistSans400Url} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={geistSans700Url} crossorigin />
     <link rel="canonical" href={canonicalUrl} />
     {alternates.map((alt: { hreflang: string; href: string }) => (
       <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
@@ -203,16 +209,16 @@ const activeStructuredData = customStructuredData || structuredData
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content="Rois Faozi Portfolio" />
-    <meta property="og:image" content={seoMeta.ogImage} />
+    <meta property="og:image" content={ogImage} />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content={seoMeta.ogImageAlt} />
+    <meta property="og:image:alt" content={ogImageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={seoMeta.ogImage} />
-    <meta name="twitter:image:alt" content={seoMeta.ogImageAlt} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
     <link rel="manifest" href="/manifest.json" />
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-icon-180x180.png" />
