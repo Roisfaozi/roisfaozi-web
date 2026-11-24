@@ -79,6 +79,15 @@
 4. **Carbon Manufacturing ERP (crbnos/carbon)** (May 2026 - Present): Upstream open-source PRs #866, #1002, and #682.
 5. **Golang Clean Architecture & API Blueprint** (2024 - 2025): Reference Go Clean Architecture & DDD starter with 85%+ SQLMock unit test coverage.
 
+## Engineering Blog & Technical Articles
+- **Blog Index (English - Outside Indonesia Default)**: https://roisfaozi.com/blog
+- **Blog Index (Bahasa Indonesia - Indonesia Geo-Routed)**: https://roisfaozi.com/id/blog
+- **RSS Feed**: https://roisfaozi.com/rss.xml
+- **Featured Study - Cutting PostgreSQL Query Latency by 90% in High-Volume Go Systems**:
+  - English URL: https://roisfaozi.com/blog/cutting-postgresql-query-latency-90-percent
+  - Indonesian URL: https://roisfaozi.com/id/blog/cutting-postgresql-query-latency-90-percent
+  - Summary: Architectural breakdown using a synthetic reference model to demonstrate how P95 query latency on 40,000+ records was reduced from 9s down to 900ms (90% reduction) in Go and PostgreSQL. Covers query timing histograms, replacing correlated `EXISTS` subqueries with pre-resolved scope predicates, composite B-tree indexes on `(scope_column, registered_at DESC)`, eliminating non-SARGable `LOWER(COALESCE(...))` function wrappers, omitting unused satellite `LEFT JOIN`s in `COUNT(*)`, separating lean list projections from heavy `JSONB` detail projections, opt-in secondary cache hydration, and a 3-second in-memory `expirable.LRU` cache verified with `go-sqlmock` and `k6`.
+
 ## Education & Certifications
 - **Bachelor of Computer Science (S.Kom)**: Cyber University of Muhammadiyah, Indonesia (Expected 2028)
 - **AWS Cloud Developing (ACD2) Certification**: Digitalent PROA x AWS Academy, 120 Hours (2024)

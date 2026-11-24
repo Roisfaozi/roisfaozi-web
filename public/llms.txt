@@ -6,6 +6,9 @@
 - [About & Technical Stack](https://roisfaozi.com/#about): Career overview, production impact metrics, AI-assisted engineering workflow (Cursor AI), and 5-category technology stack.
 - [Experience Timeline](https://roisfaozi.com/#experience): Complete 8-role career history across Indonesian enterprise banking/healthcare, Carbon Manufacturing ERP open source, and international remote teams in India, the UK, Norway, Morocco, and France.
 - [Selected Work & Case Studies](https://roisfaozi.com/#project): Production architecture breakdowns across banking DMS, Medistra Hospital QMS, SASI SIMKlinik RME, Carbon ERP, and Golang Clean Architecture.
+- [Engineering Blog (English)](https://roisfaozi.com/blog): Deep technical case studies on Go backends, PostgreSQL query tuning, and enterprise systems.
+- [Blog Engineering (Bahasa Indonesia)](https://roisfaozi.com/id/blog): Studi kasus teknis mendalam seputar backend Go, optimasi query PostgreSQL, dan arsitektur sistem enterprise.
+- [RSS Feed](https://roisfaozi.com/rss.xml): Syndicated XML feed of all published engineering articles.
 - [Frequently Asked Questions](https://roisfaozi.com/#faq): Direct answers on stack specialization, regulated sector security, SQL optimization, open-source PRs, and remote availability.
 - [Contact](https://roisfaozi.com/#contact): Direct inquiry channel for remote full-stack engineering roles and technical consulting.
 
@@ -15,6 +18,10 @@
 - **SASI SIMKlinik (Clinic & EMR Platform)**: Dual-binary Go platform (`clinic-core-api` and `qms-queue-engine`) sharing PostgreSQL across 6 isolated schemas, compliant with Permenkes 24/2022, SATUSEHAT, and BPJS bridging.
 - **Carbon Manufacturing ERP (crbnos/carbon)**: Merged upstream PR #866 (async group member search & prefetch caching), PR #1002 (AI-powered PDF extraction pipeline with Inngest across 20+ form endpoints), and PR #682 (company-isolated private buckets with signed URLs).
 - **Golang Clean Architecture & API Blueprint**: Reference Go DDD starter with dependency injection, automated migrations, and 85%+ SQLMock unit test coverage.
+
+## Published Engineering Articles
+- [Cutting PostgreSQL Query Latency by 90% in High-Volume Go Systems (EN)](https://roisfaozi.com/blog/cutting-postgresql-query-latency-90-percent): Six-layer Go and PostgreSQL optimization study reducing P95 query latency from 9s down to 900ms via pre-resolved scope predicates, composite B-tree indexes, SARGable filters, conditional COUNT joins, lean list projections, and a 3-second LRU cache.
+- [Memangkas Latensi Query PostgreSQL hingga 90% pada Sistem Go Berskala Tinggi (ID)](https://roisfaozi.com/id/blog/cutting-postgresql-query-latency-90-percent): Studi optimasi Go dan PostgreSQL enam lapis yang memangkas latensi P95 dari 9 detik menjadi 900ms.
 
 ## Extended Context & Profiles
 - [Complete Career & Technical Dossier (llms-full.txt)](https://roisfaozi.com/llms-full.txt): Unabridged Markdown profile containing all 8 roles, full achievement bullets, education, AWS Cloud Developing (ACD2) certification, and Q&A.
