@@ -7,7 +7,8 @@
     "start": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
     "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "ASTRO_TELEMETRY_DISABLED=1 astro sync && tsc --noEmit && ASTRO_TELEMETRY_DISABLED=1 astro build && node .agents/skills/site-quality-gate/scripts/audit-site.mjs"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.0.0",
