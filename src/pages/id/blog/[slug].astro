@@ -1,0 +1,36 @@
+---
+import BlogPost from '../../../components/BlogPost.astro'
+import { getArticleSlug, getPublishedBlogPosts, type BlogEntry } from '../../../utils/blog'
+
+export async function getStaticPaths() {
+  const idPosts = await getPublishedBlogPosts('id')
+  const enPosts = await getPublishedBlogPosts('en')
+
+  const idMap = new Map(idPosts.map((post) => [getArticleSlug(post), post]))
+  const allSlugs = new Set([
+    ...idPosts.map((post) => getArticleSlug(post)),
+    ...enPosts.map((post) => getArticleSlug(post)),
+  ])
+
+  return Array.from(allSlugs).map((slug) => {
+    const idPost = idMap.get(slug)
+    const fallbackPost = enPosts.find((post) => getArticleSlug(post) === slug)!
+    return {
+      params: { slug },
+      props: {
+        post: idPost || fallbackPost,
+        isFallback: !idPost,
+      },
+    }
+  })
+}
+
+interface Props {
+  post: BlogEntry
+  isFallback: boolean
+}
+
+const { post, isFallback } = Astro.props
+---
+
+<BlogPost lang="id" post={post} isFallback={isFallback} />

@@ -6,10 +6,24 @@ import { credentials, faqItems, profile, seoMeta } from '../data/profile'
 const {
   title = seoMeta.title,
   description = seoMeta.description,
+  lang = 'en',
+  keywords = seoMeta.keywords,
+  ogType = 'profile',
+  alternates = [],
+  articleMeta,
+  customStructuredData,
+  preloadHero = false,
+  noindex = false,
 } = Astro.props
 
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') || seoMeta.siteUrl
-const canonicalUrl = new URL(Astro.url.pathname, `${siteUrl}/`).href
+const normalizedPath =
+  Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/+$/, '')
+const canonicalUrl = `${siteUrl}${normalizedPath}`
+const ogLocale = lang === 'id' ? 'id_ID' : 'en_US'
+const robotsContent = noindex
+  ? 'noindex, follow'
+  : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
 
 const featuredProjects = (await getCollection('projects'))
   .filter((project) => project.data.featured)
@@ -113,43 +127,78 @@ const structuredData = {
     },
   ],
 }
+
+const activeStructuredData = customStructuredData || structuredData
 ---
 <!doctype html>
-<html lang="en" class="scroll-smooth dark">
+<html lang={lang} class="scroll-smooth dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="author" content={profile.name} />
-    <meta name="keywords" content={seoMeta.keywords} />
+    <meta name="keywords" content={keywords} />
     <meta
       name="robots"
-      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      content={robotsContent}
     />
     <meta name="theme-color" content="#09090b" />
     <link rel="canonical" href={canonicalUrl} />
-    <link
-      rel="preload"
-      as="image"
-      href="/images/hero-system.webp"
-      imagesrcset="/images/hero-system-480.webp 480w, /images/hero-system-720.webp 720w, /images/hero-system.webp 960w"
-      imagesizes="(max-width: 1023px) calc(100vw - 3rem), 40vw"
-      type="image/webp"
-      fetchpriority="high"
-    />
+    {alternates.map((alt: { hreflang: string; href: string }) => (
+      <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+    ))}
+    {preloadHero && (
+      <link
+        rel="preload"
+        as="image"
+        href="/images/hero-system.webp"
+        imagesrcset="/images/hero-system-480.webp 480w, /images/hero-system-720.webp 720w, /images/hero-system.webp 960w"
+        imagesizes="(max-width: 1023px) calc(100vw - 3rem), 40vw"
+        type="image/webp"
+        fetchpriority="high"
+      />
+    )}
     <link
       rel="alternate"
       type="text/plain"
       href="/llms.txt"
       title="LLMs.txt Profile Summary"
     />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href={`${siteUrl}/rss.xml`}
+      title="Rois Faozi Engineering Blog (RSS)"
+    />
     <link rel="me" href={profile.github} />
     <link rel="me" href={profile.linkedin} />
-    <meta property="og:type" content="profile" />
-    <meta property="profile:first_name" content="Rois" />
-    <meta property="profile:last_name" content="Faozi" />
-    <meta property="profile:username" content="Roisfaozi" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content={ogType} />
+    {ogType === 'profile' && (
+      <>
+        <meta property="profile:first_name" content="Rois" />
+        <meta property="profile:last_name" content="Faozi" />
+        <meta property="profile:username" content="Roisfaozi" />
+      </>
+    )}
+    {ogType === 'article' && articleMeta && (
+      <>
+        <meta property="article:published_time" content={articleMeta.publishedTime} />
+        {articleMeta.modifiedTime && (
+          <meta property="article:modified_time" content={articleMeta.modifiedTime} />
+        )}
+        <meta property="article:author" content={profile.name} />
+        {articleMeta.section && (
+          <meta property="article:section" content={articleMeta.section} />
+        )}
+        {articleMeta.tags?.map((tag: string) => (
+          <meta property="article:tag" content={tag} />
+        ))}
+      </>
+    )}
+    <meta property="og:locale" content={ogLocale} />
+    {alternates.length > 0 && (
+      <meta property="og:locale:alternate" content={lang === 'id' ? 'en_US' : 'id_ID'} />
+    )}
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -168,7 +217,7 @@ const structuredData = {
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-icon-180x180.png" />
     <title>{title}</title>
-    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    <script type="application/ld+json" set:html={JSON.stringify(activeStructuredData)} />
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}

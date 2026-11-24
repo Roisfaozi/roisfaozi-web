@@ -1,0 +1,8 @@
+---
+import BlogList from '../../components/BlogList.astro'
+import { getPublishedBlogPosts } from '../../utils/blog'
+
+const posts = await getPublishedBlogPosts('en')
+---
+
+<BlogList lang="en" posts={posts} />

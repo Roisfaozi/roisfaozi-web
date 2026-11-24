@@ -51,6 +51,21 @@
     Content-Type = "application/xml; charset=utf-8"
     Cache-Control = "public, max-age=3600"
 
+[[headers]]
+  for = "/rss.xml"
+  [headers.values]
+    Content-Type = "application/rss+xml; charset=utf-8"
+    Cache-Control = "public, max-age=3600"
+
+# Geo-aware bilingual routing for /blog -> /id/blog when accessed from Indonesia (ID)
+[[edge_functions]]
+  path = "/blog"
+  function = "geo-blog"
+
+[[edge_functions]]
+  path = "/blog/*"
+  function = "geo-blog"
+
 # Ensure cleanup service worker is never stale-cached
 [[headers]]
   for = "/sw.js"

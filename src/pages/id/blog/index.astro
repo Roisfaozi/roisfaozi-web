@@ -1,0 +1,16 @@
+---
+import BlogList from '../../../components/BlogList.astro'
+import { getArticleSlug, getPublishedBlogPosts } from '../../../utils/blog'
+
+const idPosts = await getPublishedBlogPosts('id')
+const idSlugs = new Set(idPosts.map((post) => getArticleSlug(post)))
+const enFallbackPosts = (await getPublishedBlogPosts('en')).filter(
+  (post) => !idSlugs.has(getArticleSlug(post)),
+)
+const posts = [...idPosts, ...enFallbackPosts].sort(
+  (left, right) =>
+    new Date(right.data.publishedAt).getTime() - new Date(left.data.publishedAt).getTime(),
+)
+---
+
+<BlogList lang="id" posts={posts} />

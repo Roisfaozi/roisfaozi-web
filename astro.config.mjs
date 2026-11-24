@@ -8,4 +8,10 @@ export default defineConfig({
   build: {
     inlineStylesheets: 'always',
   },
+  markdown: {
+    shikiConfig: {
+      theme: 'github-dark',
+      wrap: false,
+    },
+  },
 })
