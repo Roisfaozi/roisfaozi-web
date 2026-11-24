@@ -35,13 +35,18 @@ const blogIndexUrl = `${siteUrl}${blogIndexPath}`
 const otherLang: BlogLang = lang === 'id' ? 'en' : 'id'
 const otherLangPath = lang === 'id' ? enPostPath : idPostPath
 
+const postOgImage = post.data.ogImage
+  ? new URL(post.data.ogImage, `${siteUrl}/`).href
+  : `${siteUrl}/og/${lang}/${slug}.png`
+
 const alternates = [
   { hreflang: 'en', href: enPostUrl },
   { hreflang: 'id', href: idPostUrl },
   { hreflang: 'x-default', href: enPostUrl },
 ]
 
-const { Content } = await post.render()
+const { Content, headings } = await post.render()
+const tocItems = headings.filter((heading) => heading.depth === 2 || heading.depth === 3)
 const keywordsString =
   post.data.keywords.length > 0
     ? post.data.keywords.join(', ')
@@ -102,7 +107,7 @@ const structuredData = {
       description: post.data.description,
       image: {
         '@type': 'ImageObject',
-        url: seoMeta.ogImage,
+        url: postOgImage,
         width: 1200,
         height: 630,
       },
@@ -126,6 +131,8 @@ const structuredData = {
   lang={isFallback ? 'en' : lang}
   keywords={keywordsString}
   ogType="article"
+  ogImage={postOgImage}
+  ogImageAlt={post.data.title}
   alternates={alternates}
   articleMeta={{
     publishedTime: post.data.publishedAt,
@@ -139,11 +146,11 @@ const structuredData = {
   <Navbar />
 
   <main id="main-content" class="flex-1 pt-28 md:pt-36 pb-24">
-    <article class="max-w-3xl mx-auto px-6 md:px-8">
-      <div class="flex flex-wrap items-center justify-between gap-4 pb-8 border-b border-zinc-800/80">
+    <article class="max-w-7xl mx-auto px-6 md:px-12">
+      <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-zinc-800/80">
         <a
           href={blogIndexPath}
-          class="inline-flex items-center gap-2 text-sm font-medium text-zinc-300 hover:text-zinc-50 transition-colors"
+          class="inline-flex items-center gap-2 min-h-[44px] text-sm font-medium text-zinc-300 hover:text-zinc-50 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400 focus-visible:outline-offset-4 rounded-sm"
         >
           <Icon name="ph:arrow-left" class="w-4 h-4 text-emerald-400" />
           <span>{ui.backToBlog}</span>
@@ -159,7 +166,7 @@ const structuredData = {
             aria-current={lang === 'en' ? 'page' : undefined}
             aria-label="EN - English"
             class:list={[
-              'px-3.5 py-1.5 rounded-full text-xs font-mono font-medium transition-colors',
+              'inline-flex items-center justify-center min-h-[36px] px-4 rounded-full text-xs font-mono font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400 focus-visible:outline-offset-2',
               lang === 'en'
                 ? 'bg-zinc-100 text-zinc-950 font-semibold'
                 : 'text-zinc-300 hover:text-zinc-50',
@@ -173,7 +180,7 @@ const structuredData = {
             aria-current={lang === 'id' ? 'page' : undefined}
             aria-label="ID - Bahasa Indonesia"
             class:list={[
-              'px-3.5 py-1.5 rounded-full text-xs font-mono font-medium transition-colors',
+              'inline-flex items-center justify-center min-h-[36px] px-4 rounded-full text-xs font-mono font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400 focus-visible:outline-offset-2',
               lang === 'id'
                 ? 'bg-zinc-100 text-zinc-950 font-semibold'
                 : 'text-zinc-300 hover:text-zinc-50',
@@ -185,104 +192,164 @@ const structuredData = {
       </div>
 
       {isFallback && ui.fallbackNotice && (
-        <div class="mt-6 rounded-xl bg-zinc-900 border border-zinc-800 px-4 py-3 text-sm text-zinc-300">
+        <div class="mt-6 rounded-xl bg-zinc-900 border border-zinc-800 px-4 py-3 text-sm text-zinc-300 max-w-4xl">
           {ui.fallbackNotice}
         </div>
       )}
 
-      <header class="mt-8 pb-8 border-b border-zinc-800/80">
-        <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-zinc-400">
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-            {post.data.category}
-          </span>
-          <span>
-            {ui.publishedLabel}{' '}
-            <time datetime={post.data.publishedAt}>
-              {formatBlogDate(post.data.publishedAt, lang)}
-            </time>
-          </span>
-          <span aria-hidden="true">•</span>
-          <span>{post.data.readingTime}</span>
-        </div>
-
-        <h1 class="mt-5 text-3xl sm:text-4xl md:text-[2.75rem] font-bold tracking-tight text-zinc-50 leading-[1.12]">
-          {post.data.title}
-        </h1>
-
-        <p class="mt-5 text-lg text-zinc-300 leading-relaxed">
-          {post.data.description}
-        </p>
-
-        {post.data.metrics.length > 0 && (
-          <dl class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {post.data.metrics.map((metric) => (
-              <div class="rounded-xl bg-zinc-900/70 border border-zinc-800 px-4 py-3.5">
-                <dt class="text-xs font-mono text-zinc-400">{metric.label}</dt>
-                <dd class="mt-1 text-lg sm:text-xl font-bold font-mono text-emerald-400">
-                  {metric.value}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        )}
-
-        <div class="mt-6 flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-zinc-800/60">
-          <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center font-mono text-sm font-bold text-emerald-400">
-              RF
-            </div>
-            <div>
-              <p class="text-sm font-semibold text-zinc-100">{profile.name}</p>
-              <p class="text-xs font-mono text-zinc-400">{ui.authorRole}</p>
-            </div>
+      <header class="pt-10 pb-10 border-b border-zinc-800/80">
+        <div class="max-w-4xl">
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-mono tabular-nums text-zinc-400">
+            <span class="inline-flex items-center gap-2 text-zinc-200">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400" aria-hidden="true"></span>
+              <span>{post.data.category}</span>
+            </span>
+            <span aria-hidden="true">/</span>
+            <span>
+              {ui.publishedLabel}{' '}
+              <time datetime={post.data.publishedAt}>
+                {formatBlogDate(post.data.publishedAt, lang)}
+              </time>
+            </span>
+            <span aria-hidden="true">/</span>
+            <span>{post.data.readingTime}</span>
           </div>
 
-          <a
-            href={otherLangPath}
-            data-lang-switch={otherLang}
-            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-mono text-zinc-300 hover:text-zinc-50 hover:border-zinc-700 transition-colors"
-          >
-            <Icon name="ph:translate" class="w-4 h-4 text-emerald-400" />
-            <span>{ui.readInOtherLang}</span>
-          </a>
-        </div>
-      </header>
+          <h1 class="mt-5 text-3xl sm:text-4xl lg:text-[2.85rem] font-bold tracking-tight text-zinc-50 leading-[1.12]">
+            {post.data.title}
+          </h1>
 
-      <div class="blog-prose mt-10">
-        <Content />
-      </div>
+          <p class="mt-5 text-lg sm:text-xl text-zinc-300 leading-relaxed max-w-[66ch]">
+            {post.data.description}
+          </p>
 
-      <footer class="mt-14 pt-8 border-t border-zinc-800">
-        <div class="flex flex-wrap gap-2" aria-label="Article tags">
-          {post.data.tags.map((tag) => (
-            <span class="px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-mono text-zinc-300">
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        <div class="mt-8 rounded-2xl bg-zinc-900/60 border border-zinc-800 p-6 sm:p-8">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-            <div>
-              <h2 class="text-xl font-bold tracking-tight text-zinc-50">
-                {ui.ctaHeading}
-              </h2>
-              <p class="mt-2 text-sm text-zinc-300 leading-relaxed max-w-xl">
-                {ui.ctaBody}
-              </p>
+          <div class="mt-8 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center font-mono text-xs font-semibold text-emerald-400">
+                RF
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-zinc-100">{profile.name}</p>
+                <p class="text-xs font-mono text-zinc-400">{ui.authorRole}</p>
+              </div>
             </div>
 
             <a
-              href="/#contact"
-              class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-zinc-100 text-zinc-950 font-semibold text-sm hover:bg-white transition-colors shrink-0 active:scale-[0.98]"
+              href={otherLangPath}
+              data-lang-switch={otherLang}
+              class="inline-flex items-center gap-2 min-h-[40px] px-4 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-mono text-zinc-300 hover:text-zinc-50 hover:border-zinc-700 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400 focus-visible:outline-offset-2"
             >
-              <span>{ui.ctaButton}</span>
-              <Icon name="ph:arrow-up-right" class="w-4 h-4" />
+              <Icon name="ph:translate" class="w-4 h-4 text-emerald-400" />
+              <span>{ui.readInOtherLang}</span>
             </a>
           </div>
         </div>
-      </footer>
+      </header>
+
+      {tocItems.length > 0 && (
+        <details class="lg:hidden mt-6 rounded-xl bg-zinc-900/50 border border-zinc-800 px-4 py-3">
+          <summary class="flex items-center justify-between cursor-pointer list-none [&::-webkit-details-marker]:hidden text-sm font-medium text-zinc-200 min-h-[36px]">
+            <span>{ui.tocHeading}</span>
+            <Icon name="ph:caret-down" class="w-4 h-4 text-zinc-400" />
+          </summary>
+          <nav aria-label={ui.tocHeading} class="mt-3 pt-3 border-t border-zinc-800/80">
+            <ul class="space-y-2 text-sm">
+              {tocItems.map((heading) => (
+                <li class={heading.depth === 3 ? 'pl-4' : ''}>
+                  <a
+                    href={`#${heading.slug}`}
+                    class="block py-1 text-zinc-400 hover:text-emerald-400 transition-colors"
+                  >
+                    {heading.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </details>
+      )}
+
+      <div class="lg:grid lg:grid-cols-[minmax(0,1fr)_240px] xl:grid-cols-[minmax(0,1fr)_260px] lg:gap-14 xl:gap-20 items-start pt-10 md:pt-12">
+        <div class="min-w-0">
+          <div class="blog-prose">
+            <Content />
+          </div>
+
+          <footer class="mt-16 pt-10 border-t border-zinc-800/80 max-w-[74ch]">
+            <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-mono text-zinc-400 lg:hidden pb-8 border-b border-zinc-800/60 mb-8">
+              {post.data.tags.map((tag) => (
+                <span>{tag}</span>
+              ))}
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+              <div>
+                <h2 class="text-xl font-semibold tracking-tight text-zinc-50">
+                  {ui.ctaHeading}
+                </h2>
+                <p class="mt-2 text-sm sm:text-base text-zinc-400 leading-relaxed max-w-[54ch]">
+                  {ui.ctaBody}
+                </p>
+              </div>
+
+              <a
+                href="/#contact"
+                class="inline-flex items-center justify-center gap-2 min-h-[44px] px-6 py-3 rounded-full bg-zinc-100 text-zinc-950 font-semibold text-sm hover:bg-zinc-200 transition-colors shrink-0 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400 focus-visible:outline-offset-2"
+              >
+                <span>{ui.ctaButton}</span>
+                <Icon name="ph:arrow-up-right" class="w-4 h-4" />
+              </a>
+            </div>
+          </footer>
+        </div>
+
+        <aside class="hidden lg:block lg:sticky lg:top-28 space-y-8">
+          {tocItems.length > 0 && (
+            <nav aria-label={ui.tocHeading}>
+              <p class="text-xs font-mono font-medium text-zinc-200 mb-3">
+                {ui.tocHeading}
+              </p>
+              <ul class="border-l border-zinc-800 pl-4 space-y-2.5 text-sm">
+                {tocItems.map((heading) => (
+                  <li class={heading.depth === 3 ? 'pl-3' : ''}>
+                    <a
+                      href={`#${heading.slug}`}
+                      data-toc-link={heading.slug}
+                      class="block text-zinc-400 hover:text-zinc-100 transition-colors leading-snug focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400 focus-visible:outline-offset-2 rounded-sm"
+                    >
+                      {heading.text}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
+
+          <div class="pt-6 border-t border-zinc-800/70">
+            <p class="text-xs font-mono font-medium text-zinc-200 mb-3">
+              {ui.topicsHeading}
+            </p>
+            <ul class="flex flex-wrap gap-x-3 gap-y-1.5 text-xs font-mono text-zinc-400">
+              {post.data.tags.map((tag) => (
+                <li>{tag}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="pt-6 border-t border-zinc-800/70">
+            <button
+              type="button"
+              id="copy-article-link"
+              data-copy-label={ui.copyLink}
+              data-copied-label={ui.copied}
+              class="inline-flex items-center gap-2 min-h-[40px] px-4 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-mono text-zinc-300 hover:text-zinc-50 hover:border-zinc-700 transition-colors active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400 focus-visible:outline-offset-2"
+            >
+              <Icon name="ph:link-simple" class="w-4 h-4 text-emerald-400" />
+              <span id="copy-article-label">{ui.copyLink}</span>
+            </button>
+          </div>
+        </aside>
+      </div>
     </article>
 
     <ScrollTop />
@@ -300,4 +367,44 @@ const structuredData = {
       }
     });
   });
+
+  var copyBtn = document.getElementById('copy-article-link');
+  var copyLabel = document.getElementById('copy-article-label');
+  if (copyBtn && copyLabel && navigator.clipboard) {
+    copyBtn.addEventListener('click', function () {
+      navigator.clipboard.writeText(window.location.href).then(function () {
+        var original = copyBtn.getAttribute('data-copy-label') || 'Copy link';
+        var done = copyBtn.getAttribute('data-copied-label') || 'Copied';
+        copyLabel.textContent = done;
+        setTimeout(function () {
+          copyLabel.textContent = original;
+        }, 2000);
+      });
+    });
+  }
+
+  if ('IntersectionObserver' in window) {
+    var tocLinks = document.querySelectorAll('[data-toc-link]');
+    var headingEls = Array.prototype.slice
+      .call(document.querySelectorAll('.blog-prose h2[id], .blog-prose h3[id]'));
+    if (tocLinks.length > 0 && headingEls.length > 0) {
+      var tocObs = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var activeId = entry.target.getAttribute('id');
+            tocLinks.forEach(function (a) {
+              var matches = a.getAttribute('data-toc-link') === activeId;
+              a.classList.toggle('text-emerald-400', matches);
+              a.classList.toggle('text-zinc-400', !matches);
+            });
+          });
+        },
+        { rootMargin: '-96px 0px -70% 0px', threshold: 0 },
+      );
+      headingEls.forEach(function (h) {
+        tocObs.observe(h);
+      });
+    }
+  }
 </script>

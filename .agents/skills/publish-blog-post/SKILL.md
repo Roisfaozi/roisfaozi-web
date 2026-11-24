@@ -22,6 +22,7 @@ Follow these steps in order whenever creating, translating, or editing any blog 
   - `src/content/blog/en/<slug>.md` (`lang: "en"`)
   - `src/content/blog/id/<slug>.md` (`lang: "id"`)
 - Set the exact same `translationKey` string on both files.
+- A bespoke `1200x630` PNG OpenGraph card (`/og/en/<slug>.png` and `/og/id/<slug>.png`) is generated automatically at build time from frontmatter `title`, `description`, `category`, `publishedAt`, and `readingTime`. Set `ogImage: "/images/custom-og.png"` only if overriding with a custom image.
 
 ## 3. Humanize English Article (`en/<slug>.md`)
 

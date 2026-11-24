@@ -43,18 +43,22 @@ export const BLOG_UI_COPY = {
     pageTitle: 'Engineering Blog | Rois Faozi - Go, PostgreSQL & Distributed Systems',
     pageDescription:
       'Production case studies and architectural write-ups by Rois Faozi on Go (Golang) backends, PostgreSQL query tuning, MQTT/WebSockets IoT telemetry, and enterprise system design.',
-    heading: 'Engineering Notes.',
+    heading: 'Engineering Notes',
     subheading:
-      'Deep technical case studies from production systems: Go backends, PostgreSQL query optimization, high-throughput telemetry, and multi-schema architecture.',
+      'Production notes and architectural case studies on Go backends, PostgreSQL query tuning, high-throughput telemetry, and multi-schema design.',
     featuredBadge: 'Case Study',
     readArticle: 'Read article',
-    backToBlog: 'Back to all articles',
+    backToBlog: 'All articles',
     backToHome: 'Portfolio Home',
     publishedLabel: 'Published',
     updatedLabel: 'Updated',
     languageLabel: 'Language',
+    tocHeading: 'On this page',
+    topicsHeading: 'Topics',
+    copyLink: 'Copy link',
+    copied: 'Copied',
     switchLangHint:
-      'Language is detected automatically by region (Indonesia serves Bahasa Indonesia; outside Indonesia serves English). You can switch manually above anytime.',
+      'Region auto-routes Indonesia visitors to Bahasa Indonesia and others to English. Switch above anytime.',
     rssLabel: 'RSS Feed',
     authorRole: 'Full-Stack Developer (Go & TypeScript)',
     authorBio:
@@ -63,7 +67,7 @@ export const BLOG_UI_COPY = {
     ctaBody:
       'I am available for remote Full-Stack or Go Backend engineering roles and technical architecture consulting.',
     ctaButton: 'Discuss a Project',
-    readInOtherLang: 'Baca artikel ini dalam Bahasa Indonesia',
+    readInOtherLang: 'Baca dalam Bahasa Indonesia',
     otherLangName: 'Bahasa Indonesia',
     fallbackNotice: '',
   },
@@ -71,18 +75,22 @@ export const BLOG_UI_COPY = {
     pageTitle: 'Blog Engineering | Rois Faozi - Go, PostgreSQL & Sistem Terdistribusi',
     pageDescription:
       'Studi kasus produksi dan catatan arsitektur oleh Rois Faozi seputar backend Go (Golang), optimasi query PostgreSQL, telemetri IoT MQTT/WebSockets, dan desain sistem enterprise.',
-    heading: 'Catatan Engineering.',
+    heading: 'Catatan Engineering',
     subheading:
-      'Studi kasus teknis mendalam dari sistem produksi nyata: backend Go, optimasi query PostgreSQL, telemetri throughput tinggi, dan arsitektur multi-skema.',
+      'Catatan teknis dan studi kasus produksi seputar backend Go, optimasi query PostgreSQL, telemetri throughput tinggi, dan arsitektur multi-skema.',
     featuredBadge: 'Studi Kasus',
     readArticle: 'Baca artikel',
-    backToBlog: 'Kembali ke daftar artikel',
+    backToBlog: 'Semua artikel',
     backToHome: 'Beranda Portofolio',
     publishedLabel: 'Diterbitkan',
     updatedLabel: 'Diperbarui',
     languageLabel: 'Bahasa',
+    tocHeading: 'Daftar isi',
+    topicsHeading: 'Topik',
+    copyLink: 'Salin tautan',
+    copied: 'Tersalin',
     switchLangHint:
-      'Bahasa disesuaikan otomatis berdasarkan wilayah akses (Indonesia menampilkan Bahasa Indonesia; luar Indonesia menampilkan Bahasa Inggris). Anda dapat menggantinya secara manual kapan saja.',
+      'Bahasa otomatis menyesuaikan wilayah akses (Indonesia ke Bahasa Indonesia, luar Indonesia ke Inggris). Ubah kapan saja di atas.',
     rssLabel: 'Feed RSS',
     authorRole: 'Full-Stack Developer (Go & TypeScript)',
     authorBio:
@@ -91,7 +99,7 @@ export const BLOG_UI_COPY = {
     ctaBody:
       'Saya terbuka untuk kolaborasi remote Full-Stack atau Go Backend Engineer serta konsultasi arsitektur teknis.',
     ctaButton: 'Diskusikan Proyek',
-    readInOtherLang: 'Read this article in English',
+    readInOtherLang: 'Read in English',
     otherLangName: 'English',
     fallbackNotice:
       'Artikel ini saat ini baru tersedia dalam Bahasa Inggris. Menampilkan versi asli Bahasa Inggris.',

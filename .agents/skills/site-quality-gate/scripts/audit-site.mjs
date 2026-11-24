@@ -190,6 +190,50 @@ for (const htmlFile of htmlFiles) {
   }
 }
 
+// 5b. Per-article and index OpenGraph PNG verification
+const expectedOgFiles = ['og/blog-en.png', 'og/blog-id.png']
+for (const slug of enSlugs) {
+  expectedOgFiles.push(`og/en/${slug}.png`, `og/id/${slug}.png`)
+}
+
+const PNG_MAGIC = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])
+for (const relOg of expectedOgFiles) {
+  const fullOg = path.join(ROOT, 'dist', relOg)
+  if (!fs.existsSync(fullOg)) {
+    failures.push(`Missing built OG image dist/${relOg}`)
+    continue
+  }
+  const head = fs.readFileSync(fullOg).subarray(0, 8)
+  if (!head.equals(PNG_MAGIC)) {
+    failures.push(`Invalid PNG signature in dist/${relOg}`)
+  }
+}
+
+for (const slug of enSlugs) {
+  for (const lang of ['en', 'id']) {
+    const htmlPath =
+      lang === 'en'
+        ? path.join(ROOT, 'dist/blog', slug, 'index.html')
+        : path.join(ROOT, 'dist/id/blog', slug, 'index.html')
+    if (!fs.existsSync(htmlPath)) {
+      failures.push(`Missing built blog page ${rel(htmlPath)}`)
+      continue
+    }
+    const html = fs.readFileSync(htmlPath, 'utf8')
+    if (!/<meta property="og:image" content="https:\/\/roisfaozi\.com\//.test(html)) {
+      failures.push(`Missing OpenGraph image meta tag in ${rel(htmlPath)}`)
+    }
+    if (
+      !html.includes(`content="https://roisfaozi.com/og/${lang}/${slug}.png"`) &&
+      !/^ogImage:/m.test(
+        fs.readFileSync(path.join(ROOT, 'src/content/blog', lang, `${slug}.md`), 'utf8'),
+      )
+    ) {
+      failures.push(`Blog post ${rel(htmlPath)} does not point to /og/${lang}/${slug}.png`)
+    }
+  }
+}
+
 // 6. Indonesian blog metrik.py verification (adhiprib/humanizer-indonesia)
 const metrikScript = '/home/user/.agents/skills/humanizer-indonesia/scripts/metrik.py'
 if (fs.existsSync(metrikScript)) {
